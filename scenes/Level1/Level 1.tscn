@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://uvnrymjo5do2"]
+
+[ext_resource type="PackedScene" uid="uid://ld71sub1glbx" path="res://scenes/Towers/OrbTower.tscn" id="1_mt1ek"]
+[ext_resource type="PackedScene" uid="uid://b141qhpugwdbs" path="res://scenes/Player.tscn" id="2_wclmb"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="OrbTower" parent="." instance=ExtResource("1_mt1ek")]
+position = Vector2(591, 364)
+
+[node name="Player" parent="." instance=ExtResource("2_wclmb")]
