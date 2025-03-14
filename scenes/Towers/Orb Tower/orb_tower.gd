@@ -1,6 +1,14 @@
+@tool
 extends StaticBody2D
 
-@export var level = 1
+@export var level: int = 1:
+	get:
+		return level
+	set(value):
+		level = value
+		if Engine.is_editor_hint():
+			update_level()
+			
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var spawner = $ProjectionSpawner
@@ -9,9 +17,10 @@ signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
 signal finished_attacking
 
+const BASE_RECT = [Rect2(0, 64, 64, 128), Rect2(64, 64, 64, 128), Rect2(128, 64, 64, 128)]
+
 var idle_animation : String
 var attack_animation : String
-var base_rect = [Rect2(0, 64, 64, 128), Rect2(64, 64, 64, 128), Rect2(128, 64, 64, 128)]
 var weapon_pos_y = [-60, -70, -85]
 var is_attacking = false
 var attack_frame = 7
@@ -19,9 +28,13 @@ var targets = []
 var target
 
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		update_level()
+	
+func update_level() -> void:
 	idle_animation = "Level %d Idle" % [level]
 	attack_animation = "Level %d Attack" % [level]
-	base.region_rect = base_rect[level - 1]
+	base.region_rect = BASE_RECT[level - 1]
 	
 	weapon.position.y = weapon_pos_y[level - 1]
 	weapon.play(idle_animation)
@@ -60,12 +73,12 @@ func attack() -> void:
 	finished_attacking.emit()
 
 func _process(delta: float) -> void:
-	if not target and targets.size() > 0:
-		target = find_closest_target()
-	if target and not is_attacking:
-		attack()
-
+	if not Engine.is_editor_hint():
+		if not target and targets.size() > 0:
+			target = find_closest_target()
+		if target and not is_attacking:
+			attack()
 
 func _on_weapon_frame_changed() -> void:
-	if weapon.frame == attack_frame:
+	if weapon.frame == attack_frame and is_instance_valid(target):
 		spawner.emit_signal("spawn", target)
