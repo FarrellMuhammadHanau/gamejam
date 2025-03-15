@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://140cwmlvmpo5"]
+[gd_scene load_steps=59 format=3 uid="uid://140cwmlvmpo5"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/orb_tower.gd" id="1_et4gv"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/range.gd" id="2_kufdg"]
@@ -14,6 +14,12 @@ radius = 350.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jl1o"]
 size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqjh4"]
+bg_color = Color(0, 0, 0, 0.372549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p25c"]
+bg_color = Color(0.333333, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ogcs"]
 atlas = ExtResource("4_g5viv")
@@ -384,6 +390,7 @@ animations = [{
 [node name="OrbTower" type="StaticBody2D" groups=["Tower"]]
 script = ExtResource("1_et4gv")
 level = 3
+health = 1000
 
 [node name="Range" type="Area2D" parent="."]
 script = ExtResource("2_kufdg")
@@ -394,6 +401,26 @@ shape = SubResource("CircleShape2D_s6s7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0jl1o")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.352941)
+position = Vector2(4.42, -33.5)
+scale = Vector2(0.986875, 1.02344)
+texture = ExtResource("3_nryxu")
+region_enabled = true
+region_rect = Rect2(128, 64, 64, 128)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -34.0
+offset_top = -106.0
+offset_right = 306.0
+offset_bottom = -79.0
+scale = Vector2(0.2, 0.2)
+theme_override_constants/outline_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_mqjh4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1p25c")
+value = 100.0
+show_percentage = false
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
@@ -414,6 +441,7 @@ projection = ExtResource("8_cxmib")
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]
 [connection signal="body_entered" from="Range" to="Range" method="_on_body_entered"]
 [connection signal="body_exited" from="Range" to="Range" method="_on_body_exited"]
 [connection signal="frame_changed" from="Weapon" to="." method="_on_weapon_frame_changed"]

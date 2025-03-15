@@ -1,17 +1,10 @@
-@tool
 extends StaticBody2D
 
-@export var level: int = 1:
-	get:
-		return level
-	set(value):
-		level = value
-		if Engine.is_editor_hint():
-			update_level()
-@export var health = 500
+@export var level: int = 1
+@export var health = 800
 @onready var base = $Base
 @onready var weapon = $Weapon
-@onready var spawner = $ProjectionSpawner
+@onready var spawner = $Weapon/ProjectionSpawner
 @onready var health_bar = $HealthBar
 
 signal add_target(body: CharacterBody2D)
@@ -19,21 +12,21 @@ signal remove_target(body: CharacterBody2D)
 signal finished_attacking
 signal take_damage(damage: int)
 
-const BASE_RECT = [Rect2(0, 64, 64, 128), Rect2(64, 64, 64, 128), Rect2(128, 64, 64, 128)]
+const BASE_RECT = [Rect2(0, 0, 64, 128), Rect2(64, 0, 64, 128), Rect2(128, 0, 64, 128)]
 
 var idle_animation : String
 var attack_animation : String
-var weapon_pos_y = [-60, -70, -85]
+var weapon_pos_y = [-43, -51, -61]
 var is_attacking = false
-var attack_frame = 7
+var attack_frame = 5
 var targets = []
 var target
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		health_bar.max_value = health
-		health_bar.value = health
-		update_level()
+	await get_tree().process_frame
+	health_bar.max_value = health
+	health_bar.value = health
+	update_level()
 	
 func update_level() -> void:
 	idle_animation = "Level %d Idle" % [level]
@@ -42,7 +35,6 @@ func update_level() -> void:
 	
 	weapon.position.y = weapon_pos_y[level - 1]
 	weapon.play(idle_animation)
-	spawner.position.y = weapon_pos_y[level - 1]
 
 func _on_add_target(body: CharacterBody2D) -> void:
 	targets.append(body)
@@ -77,11 +69,15 @@ func attack() -> void:
 	finished_attacking.emit()
 
 func _process(delta: float) -> void:
-	if not Engine.is_editor_hint():
-		if not target and targets.size() > 0:
-			target = find_closest_target()
-		if target and not is_attacking:
-			attack()
+	if not target and targets.size() > 0:
+		target = find_closest_target()
+	if not target:
+		return
+	
+	weapon.look_at(target.global_position)
+	weapon.rotation_degrees += 90	
+	if not is_attacking:
+		attack()
 
 func _on_weapon_frame_changed() -> void:
 	if weapon.frame == attack_frame and is_instance_valid(target):

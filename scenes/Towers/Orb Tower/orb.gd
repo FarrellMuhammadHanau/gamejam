@@ -4,7 +4,7 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 var target : Node2D
 var level = 1
-var base_damage = 20
+var base_damage = 40
 var is_enter = false
 
 # Called when the node enters the scene tree for the first time.

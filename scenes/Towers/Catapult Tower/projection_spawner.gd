@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var projection : PackedScene
-@onready var level = get_parent().level
+@onready var level = get_parent().get_parent().level
 signal spawn(Node2D)
 
 func _on_spawn(target : Node2D) ->void:

@@ -20,9 +20,14 @@ config/icon="res://icon.svg"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+run/main_run_args="show_fps"
+
 [global_group]
 
 Tower=""
+Enemy=""
 
 [input]
 
