@@ -416,8 +416,7 @@ region_rect = Rect2(0, 64, 64, 128)
 [node name="Weapon" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_n31pi")
-animation = &"Level 1 Idle"
-frame_progress = 1.0
+animation = &"Level 1 Attack"
 
 [node name="ProjectionSpawner" type="Node2D" parent="."]
 position = Vector2(0, -60)
@@ -435,6 +434,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_pr65k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_e8h4l")
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

@@ -1,14 +1,21 @@
-[gd_scene load_steps=34 format=4 uid="uid://uvnrymjo5do2"]
+[gd_scene load_steps=44 format=4 uid="uid://uvnrymjo5do2"]
 
 [ext_resource type="Texture2D" uid="uid://gl4pjsxen0ns" path="res://assets/Tiny Swords/Terrain/Water/Water.png" id="1_afukn"]
 [ext_resource type="Script" path="res://scenes/Levels/world.gd" id="1_jmi4n"]
 [ext_resource type="Texture2D" uid="uid://c27xwpvnyu0a0" path="res://assets/Tiny Swords/Terrain/Water/Foam/Foam.png" id="2_d8qn0"]
 [ext_resource type="PackedScene" uid="uid://ld71sub1glbx" path="res://scenes/Towers/Orb Tower/OrbTower Level 1.tscn" id="2_ubbyb"]
-[ext_resource type="PackedScene" uid="uid://bujxu1tpove3g" path="res://scenes/Towers/Catapult Tower/CatapultTower.tscn" id="4_aob5o"]
+[ext_resource type="PackedScene" uid="uid://bujxu1tpove3g" path="res://scenes/Towers/Catapult Tower/CatapultTower Level 1.tscn" id="4_aob5o"]
 [ext_resource type="Texture2D" uid="uid://b5iciafn7hkcy" path="res://assets/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="4_gwswj"]
 [ext_resource type="PackedScene" uid="uid://ieq3sk7hp1vx" path="res://scenes/Towers/Orb Tower/OrbTower Level 2.tscn" id="5_80hg1"]
 [ext_resource type="PackedScene" uid="uid://140cwmlvmpo5" path="res://scenes/Towers/Orb Tower/OrbTower Level 3.tscn" id="6_ghndc"]
-[ext_resource type="PackedScene" uid="uid://7mw3ugjsouxo" path="res://scenes/Enemies/Goblin/Goblin.tscn" id="7_enplx"]
+[ext_resource type="PackedScene" uid="uid://7mw3ugjsouxo" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="7_enplx"]
+[ext_resource type="PackedScene" uid="uid://cxt2jywnro8aq" path="res://scenes/Towers/Tesla Tower/TeslaTower Level 2.tscn" id="9_aitj8"]
+[ext_resource type="PackedScene" uid="uid://d2ajikl2tja1e" path="res://scenes/Towers/Catapult Tower/CatapultTower Level 2.tscn" id="9_d1nmc"]
+[ext_resource type="PackedScene" uid="uid://crgu281bx4nfk" path="res://scenes/Towers/Tesla Tower/TeslaTower Level 1.tscn" id="10_5qa2x"]
+[ext_resource type="PackedScene" uid="uid://beh3q2586lv10" path="res://scenes/Towers/Tesla Tower/TeslaTower Level 3.tscn" id="10_q2t3x"]
+[ext_resource type="PackedScene" uid="uid://cmaoex6yntqwa" path="res://scenes/Towers/Catapult Tower/CatapultTower Level 3.tscn" id="11_50dg4"]
+[ext_resource type="PackedScene" uid="uid://b3hwlllic882j" path="res://scenes/Enemies/Golem/Golem.tscn" id="15_k2x35"]
+[ext_resource type="PackedScene" uid="uid://c3m61aoygxdkm" path="res://scenes/Enemies/Lich/Lich.tscn" id="16_84mbi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpwdb"]
 texture = ExtResource("1_afukn")
@@ -367,16 +374,36 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_guy7x")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nf0s8"]
+resource_name = "Orb Towers"
+scenes/4/scene = ExtResource("2_ubbyb")
+scenes/5/scene = ExtResource("5_80hg1")
+scenes/6/scene = ExtResource("6_ghndc")
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cad6r"]
-scenes/1/scene = ExtResource("4_aob5o")
-scenes/2/scene = ExtResource("2_ubbyb")
-scenes/3/scene = ExtResource("5_80hg1")
-scenes/4/scene = ExtResource("6_ghndc")
-scenes/5/scene = ExtResource("7_enplx")
+resource_name = "Catapult Tower"
+scenes/6/scene = ExtResource("9_d1nmc")
+scenes/8/scene = ExtResource("4_aob5o")
+scenes/9/scene = ExtResource("11_50dg4")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fr2an"]
+resource_name = "Tesla Towers"
+scenes/1/scene = ExtResource("10_5qa2x")
+scenes/2/scene = ExtResource("9_aitj8")
+scenes/3/scene = ExtResource("10_q2t3x")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_yivqi"]
+resource_name = "Enemies"
+scenes/1/scene = ExtResource("7_enplx")
+scenes/2/scene = ExtResource("15_k2x35")
+scenes/3/scene = ExtResource("16_84mbi")
 
 [sub_resource type="TileSet" id="TileSet_4rfhk"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetScenesCollectionSource_cad6r")
+sources/0 = SubResource("TileSetScenesCollectionSource_nf0s8")
+sources/2 = SubResource("TileSetScenesCollectionSource_fr2an")
+sources/1 = SubResource("TileSetScenesCollectionSource_cad6r")
+sources/4 = SubResource("TileSetScenesCollectionSource_yivqi")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jmi4n")
@@ -395,8 +422,127 @@ tile_set = SubResource("TileSet_rxc8y")
 
 [node name="MiscLayer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAP3/AAAAAAAABAAIAAEAAAAAAAAAAQABAAQAAAAAAAAAAQD5/wIAAAAAAAAAAQD///r/AAAAAAAABQD+//r/AAAAAAAABQD9//r/AAAAAAAABQAAAPr/AAAAAAAABQABAPr/AAAAAAAABQACAPr/AAAAAAAABQACAPn/AAAAAAAABQABAPn/AAAAAAAABQAAAPn/AAAAAAAABQD+//v/AAAAAAAABQD///v/AAAAAAAABQADAPr/AAAAAAAABQAEAPn/AAAAAAAABQADAPn/AAAAAAAABQD///n/AAAAAAAABQABAPv/AAAAAAAABQACAPv/AAAAAAAABQADAPv/AAAAAAAABQAEAPv/AAAAAAAABQAEAPr/AAAAAAAABQAAAPv/AAAAAAAABQD9//n/AAAAAAAABQD+//n/AAAAAAAABQD///j/AAAAAAAABQA=")
+tile_map_data = PackedByteArray("AAABAPz/AgAAAAAAAwABAP7/BAAAAAAAAgD7////AAAAAAAABgAGAP7/AAAAAAAABgABAAEAAAAAAAAABgD6/wMAAQAAAAAACQAHAAMAAQAAAAAACQD6//n/BAAAAAAAAQD7//n/BAAAAAAAAQD8//n/BAAAAAAAAQD7//j/BAAAAAAAAQD8//j/BAAAAAAAAQAEAPj/BAAAAAAAAQAFAPj/BAAAAAAAAQAGAPj/BAAAAAAAAQAGAPn/BAAAAAAAAQAGAPr/BAAAAAAAAQAHAPr/BAAAAAAAAQAHAPn/BAAAAAAAAQAFAPn/BAAAAAAAAQAEAPn/BAAAAAAAAQAFAPr/BAAAAAAAAQAIAPr/BAAAAAAAAQAIAPn/BAAAAAAAAQD5//r/BAAAAAAAAQD5//v/BAAAAAAAAQD4//v/BAAAAAAAAQD6//r/BAAAAAAAAQD7//r/BAAAAAAAAQD7//z/BAAAAAAAAgAGAPz/BAAAAAAAAgD///r/BAAAAAAAAQAAAPr/BAAAAAAAAQABAPr/BAAAAAAAAQACAPr/BAAAAAAAAQD///j/BAAAAAAAAwAAAPj/BAAAAAAAAwABAPj/BAAAAAAAAwACAPj/BAAAAAAAAwA=")
 tile_set = SubResource("TileSet_4rfhk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 1)
+zoom = Vector2(0.7, 0.7)
+
+[connection signal="add_target" from="MiscLayer/TeslaTower" to="MiscLayer/TeslaTower" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/TeslaTower" to="MiscLayer/TeslaTower" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/TeslaTower" to="MiscLayer/TeslaTower" method="_on_take_damage"]
+[connection signal="reached" from="MiscLayer/Golem" to="MiscLayer/Golem" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/Golem" to="MiscLayer/Golem" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/Golem" to="MiscLayer/Golem" method="_on_unreached"]
+[connection signal="add_target" from="MiscLayer/OrbTower" to="MiscLayer/OrbTower" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/OrbTower" to="MiscLayer/OrbTower" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/OrbTower" to="MiscLayer/OrbTower" method="_on_take_damage"]
+[connection signal="add_target" from="MiscLayer/@StaticBody2D@303722" to="MiscLayer/@StaticBody2D@303722" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/@StaticBody2D@303722" to="MiscLayer/@StaticBody2D@303722" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/@StaticBody2D@303722" to="MiscLayer/@StaticBody2D@303722" method="_on_take_damage"]
+[connection signal="add_target" from="MiscLayer/@StaticBody2D@303723" to="MiscLayer/@StaticBody2D@303723" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/@StaticBody2D@303723" to="MiscLayer/@StaticBody2D@303723" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/@StaticBody2D@303723" to="MiscLayer/@StaticBody2D@303723" method="_on_take_damage"]
+[connection signal="add_target" from="MiscLayer/CatapultTower" to="MiscLayer/CatapultTower" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/CatapultTower" to="MiscLayer/CatapultTower" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/CatapultTower" to="MiscLayer/CatapultTower" method="_on_take_damage"]
+[connection signal="add_target" from="MiscLayer/@StaticBody2D@303729" to="MiscLayer/@StaticBody2D@303729" method="_on_add_target"]
+[connection signal="remove_target" from="MiscLayer/@StaticBody2D@303729" to="MiscLayer/@StaticBody2D@303729" method="_on_remove_target"]
+[connection signal="take_damage" from="MiscLayer/@StaticBody2D@303729" to="MiscLayer/@StaticBody2D@303729" method="_on_take_damage"]
+[connection signal="reached" from="MiscLayer/Skeleton" to="MiscLayer/Skeleton" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/Skeleton" to="MiscLayer/Skeleton" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/Skeleton" to="MiscLayer/Skeleton" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303741" to="MiscLayer/@CharacterBody2D@303741" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303741" to="MiscLayer/@CharacterBody2D@303741" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303741" to="MiscLayer/@CharacterBody2D@303741" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303742" to="MiscLayer/@CharacterBody2D@303742" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303742" to="MiscLayer/@CharacterBody2D@303742" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303742" to="MiscLayer/@CharacterBody2D@303742" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303743" to="MiscLayer/@CharacterBody2D@303743" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303743" to="MiscLayer/@CharacterBody2D@303743" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303743" to="MiscLayer/@CharacterBody2D@303743" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303744" to="MiscLayer/@CharacterBody2D@303744" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303744" to="MiscLayer/@CharacterBody2D@303744" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303744" to="MiscLayer/@CharacterBody2D@303744" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303745" to="MiscLayer/@CharacterBody2D@303745" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303745" to="MiscLayer/@CharacterBody2D@303745" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303745" to="MiscLayer/@CharacterBody2D@303745" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303746" to="MiscLayer/@CharacterBody2D@303746" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303746" to="MiscLayer/@CharacterBody2D@303746" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303746" to="MiscLayer/@CharacterBody2D@303746" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303747" to="MiscLayer/@CharacterBody2D@303747" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303747" to="MiscLayer/@CharacterBody2D@303747" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303747" to="MiscLayer/@CharacterBody2D@303747" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303748" to="MiscLayer/@CharacterBody2D@303748" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303748" to="MiscLayer/@CharacterBody2D@303748" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303748" to="MiscLayer/@CharacterBody2D@303748" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303749" to="MiscLayer/@CharacterBody2D@303749" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303749" to="MiscLayer/@CharacterBody2D@303749" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303749" to="MiscLayer/@CharacterBody2D@303749" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303750" to="MiscLayer/@CharacterBody2D@303750" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303750" to="MiscLayer/@CharacterBody2D@303750" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303750" to="MiscLayer/@CharacterBody2D@303750" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303751" to="MiscLayer/@CharacterBody2D@303751" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303751" to="MiscLayer/@CharacterBody2D@303751" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303751" to="MiscLayer/@CharacterBody2D@303751" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303752" to="MiscLayer/@CharacterBody2D@303752" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303752" to="MiscLayer/@CharacterBody2D@303752" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303752" to="MiscLayer/@CharacterBody2D@303752" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303753" to="MiscLayer/@CharacterBody2D@303753" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303753" to="MiscLayer/@CharacterBody2D@303753" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303753" to="MiscLayer/@CharacterBody2D@303753" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303754" to="MiscLayer/@CharacterBody2D@303754" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303754" to="MiscLayer/@CharacterBody2D@303754" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303754" to="MiscLayer/@CharacterBody2D@303754" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303755" to="MiscLayer/@CharacterBody2D@303755" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303755" to="MiscLayer/@CharacterBody2D@303755" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303755" to="MiscLayer/@CharacterBody2D@303755" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303756" to="MiscLayer/@CharacterBody2D@303756" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303756" to="MiscLayer/@CharacterBody2D@303756" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303756" to="MiscLayer/@CharacterBody2D@303756" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303757" to="MiscLayer/@CharacterBody2D@303757" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303757" to="MiscLayer/@CharacterBody2D@303757" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303757" to="MiscLayer/@CharacterBody2D@303757" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303758" to="MiscLayer/@CharacterBody2D@303758" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303758" to="MiscLayer/@CharacterBody2D@303758" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303758" to="MiscLayer/@CharacterBody2D@303758" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303759" to="MiscLayer/@CharacterBody2D@303759" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303759" to="MiscLayer/@CharacterBody2D@303759" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303759" to="MiscLayer/@CharacterBody2D@303759" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303760" to="MiscLayer/@CharacterBody2D@303760" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303760" to="MiscLayer/@CharacterBody2D@303760" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303760" to="MiscLayer/@CharacterBody2D@303760" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303761" to="MiscLayer/@CharacterBody2D@303761" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303761" to="MiscLayer/@CharacterBody2D@303761" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303761" to="MiscLayer/@CharacterBody2D@303761" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303776" to="MiscLayer/@CharacterBody2D@303776" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303776" to="MiscLayer/@CharacterBody2D@303776" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303776" to="MiscLayer/@CharacterBody2D@303776" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303782" to="MiscLayer/@CharacterBody2D@303782" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303782" to="MiscLayer/@CharacterBody2D@303782" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303782" to="MiscLayer/@CharacterBody2D@303782" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303809" to="MiscLayer/@CharacterBody2D@303809" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303809" to="MiscLayer/@CharacterBody2D@303809" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303809" to="MiscLayer/@CharacterBody2D@303809" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303810" to="MiscLayer/@CharacterBody2D@303810" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303810" to="MiscLayer/@CharacterBody2D@303810" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303810" to="MiscLayer/@CharacterBody2D@303810" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303811" to="MiscLayer/@CharacterBody2D@303811" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303811" to="MiscLayer/@CharacterBody2D@303811" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303811" to="MiscLayer/@CharacterBody2D@303811" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303812" to="MiscLayer/@CharacterBody2D@303812" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303812" to="MiscLayer/@CharacterBody2D@303812" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303812" to="MiscLayer/@CharacterBody2D@303812" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/Lich" to="MiscLayer/Lich" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/Lich" to="MiscLayer/Lich" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/Lich" to="MiscLayer/Lich" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303869" to="MiscLayer/@CharacterBody2D@303869" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303869" to="MiscLayer/@CharacterBody2D@303869" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303869" to="MiscLayer/@CharacterBody2D@303869" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303870" to="MiscLayer/@CharacterBody2D@303870" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303870" to="MiscLayer/@CharacterBody2D@303870" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303870" to="MiscLayer/@CharacterBody2D@303870" method="_on_unreached"]
+[connection signal="reached" from="MiscLayer/@CharacterBody2D@303871" to="MiscLayer/@CharacterBody2D@303871" method="_on_reached"]
+[connection signal="take_damage" from="MiscLayer/@CharacterBody2D@303871" to="MiscLayer/@CharacterBody2D@303871" method="_on_take_damage"]
+[connection signal="unreached" from="MiscLayer/@CharacterBody2D@303871" to="MiscLayer/@CharacterBody2D@303871" method="_on_unreached"]

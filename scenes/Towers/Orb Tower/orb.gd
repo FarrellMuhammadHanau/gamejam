@@ -4,7 +4,7 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 var target : Node2D
 var level = 1
-var base_damage = 40
+var damages = [40, 65, 90]
 var is_enter = false
 
 # Called when the node enters the scene tree for the first time.
@@ -31,8 +31,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == target:
 		is_enter = true
-		var damage = base_damage + base_damage * (level - 1) / 2
-		body.emit_signal("take_damage", damage)
+		body.emit_signal("take_damage", damages[level-1])
 		
 		var impact_animation = "Level %d Impact" % [level]
 		sprite.play(impact_animation)

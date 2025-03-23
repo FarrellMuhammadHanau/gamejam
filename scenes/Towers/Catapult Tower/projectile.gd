@@ -6,7 +6,7 @@ extends Node2D
 
 var target : Node2D
 var level = 1
-var base_damage = 20
+var damages = [30, 45, 60]
 var is_enter = false
 var projection_animation
 var target_global_pos
@@ -50,5 +50,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_damage_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_instance_valid(body):
-		var damage = base_damage + base_damage * (level - 1) / 2
-		body.emit_signal("take_damage", damage)
+		body.emit_signal("take_damage", damages[level-1])

@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://c26go0xna4sqv"]
+
+[ext_resource type="Texture2D" uid="uid://3cd3tfuup3kr" path="res://assets/Enemies/Lich/PNG/Lich1/Attack/Fire.png" id="1_6hejr"]
+[ext_resource type="Script" path="res://scenes/Enemies/Lich/lich_fire.gd" id="1_it361"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixxya"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywllp"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk52u"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ngi0"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2qki"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o8u4"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s114n"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5pmr"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6840"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7skh2"]
+atlas = ExtResource("1_6hejr")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bxgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixxya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywllp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk52u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ngi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2qki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o8u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s114n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5pmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6840")
+}],
+"loop": false,
+"name": &"Explode",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7skh2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v85k1"]
+radius = 4.0
+height = 16.0
+
+[node name="LichFire" type="Node2D"]
+position = Vector2(12, 0)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_it361")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 1)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_4bxgq")
+animation = &"Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_v85k1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

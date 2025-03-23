@@ -9,7 +9,6 @@ extends StaticBody2D
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
-signal finished_attacking
 signal take_damage(damage: int)
 
 const BASE_RECT = [Rect2(0, 0, 64, 128), Rect2(64, 0, 64, 128), Rect2(128, 0, 64, 128)]
@@ -41,9 +40,7 @@ func _on_add_target(body: CharacterBody2D) -> void:
 	
 func _on_remove_target(body: CharacterBody2D) -> void:
 	targets.erase(body)
-	if target == body:
-		if is_attacking:
-			await finished_attacking
+	if body and body == target:
 		target = null
 
 func find_closest_target() -> Node2D:
@@ -66,7 +63,6 @@ func attack() -> void:
 	
 	weapon.play(idle_animation)
 	is_attacking = false
-	finished_attacking.emit()
 
 func _process(delta: float) -> void:
 	if not target and targets.size() > 0:
