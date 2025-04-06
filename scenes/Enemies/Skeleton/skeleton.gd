@@ -61,8 +61,6 @@ func update_direction(dir : DIRECTION) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
-	pathFinder.path_desired_distance = 10
-	pathFinder.target_desired_distance = 10
 	towers = get_tree().get_nodes_in_group("Tower")
 	update_direction(current_direction)
 	health_bar.max_value = health
@@ -70,17 +68,21 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_death:
+		pathFinder.set_velocity(Vector2.ZERO)
 		return
 		
 	if is_attacking:
+		pathFinder.set_velocity(Vector2.ZERO)
 		return
 	
 	if towers.size() == 0:
+		pathFinder.set_velocity(Vector2.ZERO)
 		return
 	
 	if not closest or not is_instance_valid(closest):
 		closest = find_closest()
 		if not closest:
+			pathFinder.set_velocity(Vector2.ZERO)
 			return
 		
 	
@@ -102,11 +104,11 @@ func _process(delta: float) -> void:
 		update_direction(DIRECTION.UP)
 	
 	if closest in reached_towers:
+		pathFinder.set_velocity(Vector2.ZERO)
 		attack()
 		return
 	
-	velocity = target_dir * speed
-	move_and_slide()
+	pathFinder.set_velocity(target_dir * speed)
 
 func _on_take_damage(damage: int) -> void:
 	if not is_death:
@@ -157,3 +159,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if is_attacking and animSprite.frame == 4 and not is_death:
 		if is_instance_valid(closest):
 			closest.emit_signal("take_damage", damage)
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()

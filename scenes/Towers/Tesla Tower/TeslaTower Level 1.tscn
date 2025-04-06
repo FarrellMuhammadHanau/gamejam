@@ -151,11 +151,16 @@ animations = [{
 }]
 
 [node name="TeslaTower" type="StaticBody2D" groups=["Tower"]]
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("1_3xa6a")
 health = 1500
 damage = 35
 
 [node name="Range" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("2_54qyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]

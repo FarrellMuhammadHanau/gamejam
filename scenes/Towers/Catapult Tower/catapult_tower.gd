@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 		return
 	
 	weapon.look_at(target.global_position)
-	weapon.rotation_degrees += 90	
+	weapon.rotation_degrees += 90
 	if not is_attacking:
 		attack()
 
