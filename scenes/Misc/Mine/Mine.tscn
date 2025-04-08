@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo34f6x2ku7ih"]
+
+[ext_resource type="Texture2D" uid="uid://bdgcvtt1jgapn" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Inactive.png" id="1_10r3y"]
+[ext_resource type="Texture2D" uid="uid://85shp0jnmh0r" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Active.png" id="2_5sq6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gshfo"]
+atlas = ExtResource("1_10r3y")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11p5p"]
+atlas = ExtResource("2_5sq6e")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gof8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gshfo")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11p5p")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ny4ge"]
+radius = 24.0
+height = 144.0
+
+[node name="Mine" type="StaticBody2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gof8m")
+animation = &"Empty"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ny4ge")

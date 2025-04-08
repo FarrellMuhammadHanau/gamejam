@@ -1,16 +1,23 @@
-[gd_scene load_steps=36 format=3 uid="uid://beh3q2586lv10"]
+[gd_scene load_steps=37 format=3 uid="uid://beh3q2586lv10"]
 
-[ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/tesla_tower.gd" id="1_6coja"]
-[ext_resource type="Texture2D" uid="uid://b46si78toxd1u" path="res://assets/Towerpack4/Towers bases/PNGs/Tower 08.png" id="1_c15j1"]
-[ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/range.gd" id="2_i7lap"]
-[ext_resource type="Texture2D" uid="uid://t61dylp8i8o6" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Weapon.png" id="4_d2m1n"]
-[ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="7_q5w8k"]
+[ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/tesla_tower.gd" id="1_6omw1"]
+[ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/range.gd" id="2_wv61q"]
+[ext_resource type="Texture2D" uid="uid://b46si78toxd1u" path="res://assets/Towerpack4/Towers bases/PNGs/Tower 08.png" id="3_2wpwo"]
+[ext_resource type="Texture2D" uid="uid://t61dylp8i8o6" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Weapon.png" id="4_134pv"]
+[ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="5_x8tyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_la7mk"]
 radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kl6xy"]
 size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5r3t"]
+bg_color = Color(0.705882, 0.705882, 0.705882, 0.470588)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bekc"]
 bg_color = Color(0, 0, 0, 0.372549)
@@ -19,43 +26,43 @@ bg_color = Color(0, 0, 0, 0.372549)
 bg_color = Color(0.333333, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw5cx"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqfqk"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v2j2c"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pn40"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_df0qu"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqecr"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5aj3b"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yty1"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygacb"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppo63"]
-atlas = ExtResource("4_d2m1n")
+atlas = ExtResource("4_134pv")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xiisg"]
@@ -108,59 +115,59 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5ppk"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(640, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjxuc"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(960, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_impcq"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(1280, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oiby6"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(1600, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2s4d"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(1920, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1dmd"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(2240, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylcuh"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(2560, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7318x"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(2880, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0jglr"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(3200, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hum1"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(3520, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vem2"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(3840, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7btc"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(4160, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3adw"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(4480, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxv5d"]
-atlas = ExtResource("7_q5w8k")
+atlas = ExtResource("5_x8tyb")
 region = Rect2(4800, 0, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v7ihd"]
@@ -216,21 +223,29 @@ animations = [{
 [node name="TeslaTower" type="StaticBody2D" groups=["Tower"]]
 collision_layer = 3
 collision_mask = 0
-script = ExtResource("1_6coja")
+script = ExtResource("1_6omw1")
 health = 2000
 damage = 70
 
 [node name="Range" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("2_i7lap")
+script = ExtResource("2_wv61q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_la7mk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kl6xy")
+
+[node name="RangeIndicator" type="Panel" parent="."]
+visible = false
+z_index = -1
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5r3t")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -34.0
@@ -247,7 +262,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
-texture = ExtResource("1_c15j1")
+texture = ExtResource("3_2wpwo")
 region_enabled = true
 region_rect = Rect2(128, 64, 64, 128)
 

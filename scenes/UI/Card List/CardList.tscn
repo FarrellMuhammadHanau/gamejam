@@ -1,0 +1,161 @@
+[gd_scene load_steps=23 format=3 uid="uid://dbxjrrk4wdlwb"]
+
+[ext_resource type="Texture2D" uid="uid://062fsoyi2nd3" path="res://assets/Tiny Swords/UI/Banners/Banner_Connection_Left.png" id="1_hjhed"]
+[ext_resource type="Texture2D" uid="uid://f5kn26rxuhv0" path="res://assets/Tiny Swords/UI/Banners/Carved_3Slides.png" id="3_ork1d"]
+[ext_resource type="Texture2D" uid="uid://bdms0rcv6aw3t" path="res://assets/ModifiedButton/Orb/not pressed.png" id="3_q033f"]
+[ext_resource type="Texture2D" uid="uid://chugypdeeuct7" path="res://assets/ModifiedButton/Orb/pressed.png" id="4_7t5d1"]
+[ext_resource type="Texture2D" uid="uid://6fvuhybxtroi" path="res://assets/ModifiedButton/Orb/dissable.png" id="5_hqnx5"]
+[ext_resource type="Script" path="res://scenes/UI/Card List/spawn_draggable.gd" id="6_e17g5"]
+[ext_resource type="PackedScene" uid="uid://bvpx4846p242w" path="res://scenes/Towers/Orb Tower/OrbTowerDraggable.tscn" id="7_kb4oh"]
+[ext_resource type="Texture2D" uid="uid://cjb71qmnj62mo" path="res://assets/ModifiedButton/Catapult/not pressed.png" id="8_3ik75"]
+[ext_resource type="PackedScene" uid="uid://jfpf8l2q136w" path="res://scenes/Towers/Catapult Tower/CatapultTowerDraggable.tscn" id="8_ib88s"]
+[ext_resource type="Texture2D" uid="uid://bo67kee0pmv2s" path="res://assets/ModifiedButton/Catapult/pressed.png" id="9_voeyq"]
+[ext_resource type="Texture2D" uid="uid://dke4cr554ordm" path="res://assets/ModifiedButton/Catapult/dissable.png" id="10_x6emf"]
+[ext_resource type="Texture2D" uid="uid://dgjp8f7vkrk4v" path="res://assets/ModifiedButton/Ballista/not pressed.png" id="12_13kya"]
+[ext_resource type="Texture2D" uid="uid://cj1bppgy3l04t" path="res://assets/ModifiedButton/Ballista/pressed fix 1.png" id="13_g02sh"]
+[ext_resource type="Texture2D" uid="uid://yqwe036yknse" path="res://assets/ModifiedButton/Ballista/dissable.png" id="14_abgp8"]
+[ext_resource type="Texture2D" uid="uid://cg0mh5ktlvj7u" path="res://assets/ModifiedButton/Tesla/not pressed.png" id="15_f8tvu"]
+[ext_resource type="PackedScene" uid="uid://bxhlxxaphr2k3" path="res://scenes/Towers/Ballista/BallistaDraggable.tscn" id="15_vtyi1"]
+[ext_resource type="Texture2D" uid="uid://bfkp4fqslaerq" path="res://assets/ModifiedButton/Tesla/pressed.png" id="16_mae6x"]
+[ext_resource type="Texture2D" uid="uid://braabdvgddbvk" path="res://assets/ModifiedButton/Tesla/dissable.png" id="17_sre28"]
+[ext_resource type="Texture2D" uid="uid://cyb038j34hvne" path="res://assets/ModifiedButton/Dynamite/not pressed.png" id="18_v7ui7"]
+[ext_resource type="PackedScene" uid="uid://i7b0mexm5bag" path="res://scenes/Towers/Tesla Tower/TeslaDraggable.tscn" id="19_6vwk5"]
+[ext_resource type="Texture2D" uid="uid://gnb2hkfvtn7j" path="res://assets/ModifiedButton/Dynamite/pressed.png" id="19_waiqh"]
+[ext_resource type="Texture2D" uid="uid://c101gnnsmw7b4" path="res://assets/ModifiedButton/Dynamite/dissable.png" id="20_0p27f"]
+
+[node name="CardList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Banner" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 528.0
+offset_right = 416.0
+offset_bottom = 664.0
+size_flags_vertical = 4
+texture = ExtResource("1_hjhed")
+region_rect = Rect2(3, 47, 140, 124)
+patch_margin_left = 46
+patch_margin_right = 16
+patch_margin_bottom = 126
+
+[node name="Carved" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.864
+anchor_right = 0.653
+anchor_bottom = 1.0
+offset_left = -367.68
+offset_top = -15.872
+offset_right = -344.256
+offset_bottom = -16.0
+size_flags_vertical = 4
+texture = ExtResource("3_ork1d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.347
+anchor_top = 0.84
+anchor_right = 0.642
+anchor_bottom = 0.963
+offset_left = -359.744
+offset_top = 7.67999
+offset_right = -345.584
+offset_bottom = 7.97595
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Orb Tower" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_q033f")
+texture_pressed = ExtResource("4_7t5d1")
+texture_disabled = ExtResource("5_hqnx5")
+stretch_mode = 0
+script = ExtResource("6_e17g5")
+draggable = ExtResource("7_kb4oh")
+price = 7
+
+[node name="Catapult Tower" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_3ik75")
+texture_pressed = ExtResource("9_voeyq")
+texture_disabled = ExtResource("10_x6emf")
+stretch_mode = 0
+script = ExtResource("6_e17g5")
+draggable = ExtResource("8_ib88s")
+collection_id = 1
+price = 10
+
+[node name="Ballista" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_13kya")
+texture_pressed = ExtResource("13_g02sh")
+texture_disabled = ExtResource("14_abgp8")
+stretch_mode = 0
+script = ExtResource("6_e17g5")
+draggable = ExtResource("15_vtyi1")
+collection_id = 2
+price = 17
+
+[node name="Tesla Tower" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("15_f8tvu")
+texture_pressed = ExtResource("16_mae6x")
+texture_disabled = ExtResource("17_sre28")
+stretch_mode = 0
+script = ExtResource("6_e17g5")
+draggable = ExtResource("19_6vwk5")
+collection_id = 3
+price = 15
+
+[node name="Dynamite" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("18_v7ui7")
+texture_pressed = ExtResource("19_waiqh")
+texture_disabled = ExtResource("20_0p27f")
+stretch_mode = 0
+script = ExtResource("6_e17g5")
+collection_id = 6
+
+[connection signal="mouse_entered" from="HBoxContainer/Orb Tower" to="HBoxContainer/Orb Tower" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Orb Tower" to="HBoxContainer/Orb Tower" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Orb Tower" to="HBoxContainer/Orb Tower" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Catapult Tower" to="HBoxContainer/Catapult Tower" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Catapult Tower" to="HBoxContainer/Catapult Tower" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Catapult Tower" to="HBoxContainer/Catapult Tower" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Ballista" to="HBoxContainer/Ballista" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Ballista" to="HBoxContainer/Ballista" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Ballista" to="HBoxContainer/Ballista" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Tesla Tower" to="HBoxContainer/Tesla Tower" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Tesla Tower" to="HBoxContainer/Tesla Tower" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Tesla Tower" to="HBoxContainer/Tesla Tower" method="_on_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Dynamite" to="HBoxContainer/Dynamite" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Dynamite" to="HBoxContainer/Dynamite" method="_on_mouse_exited"]

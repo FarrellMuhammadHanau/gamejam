@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=3 uid="uid://i7b0mexm5bag"]
+
+[ext_resource type="Script" path="res://scripts/Draggable.gd" id="1_870ya"]
+[ext_resource type="Texture2D" uid="uid://b46si78toxd1u" path="res://assets/Towerpack4/Towers bases/PNGs/Tower 08.png" id="1_ogdj4"]
+[ext_resource type="Texture2D" uid="uid://t61dylp8i8o6" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Weapon.png" id="3_1x1js"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh7jn"]
+bg_color = Color(0.705882, 0.705882, 0.705882, 0.470588)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw5cx"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqfqk"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2j2c"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pn40"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df0qu"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqecr"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aj3b"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yty1"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygacb"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppo63"]
+atlas = ExtResource("3_1x1js")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q770j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw5cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqfqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2j2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pn40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df0qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqecr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aj3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yty1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygacb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppo63")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_gw5cx")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw5cx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[node name="TeslaDraggable" type="Node2D"]
+script = ExtResource("1_870ya")
+
+[node name="Range" type="Panel" parent="."]
+z_index = -1
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh7jn")
+
+[node name="Base" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(0, -32)
+texture = ExtResource("1_ogdj4")
+region_enabled = true
+region_rect = Rect2(128, 64, 64, 128)
+
+[node name="Weapon" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(0, -71)
+sprite_frames = SubResource("SpriteFrames_q770j")
+animation = &"Attack"

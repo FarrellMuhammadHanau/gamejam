@@ -585,9 +585,10 @@ animation = &"Down Attack"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 13.0
+radius = 20.0
 max_neighbors = 15
 avoidance_priority = 0.5
+debug_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -11.0

@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 	if is_death:
 		pathFinder.set_velocity(Vector2.ZERO)
 		return
-		
+	
 	if is_attacking:
 		pathFinder.set_velocity(Vector2.ZERO)
 		return
@@ -84,9 +84,12 @@ func _process(delta: float) -> void:
 		if not closest:
 			pathFinder.set_velocity(Vector2.ZERO)
 			return
-		
+	
 	
 	pathFinder.target_position = closest.global_position
+	if pathFinder.is_navigation_finished():
+		return
+
 	var target_dir = pathFinder.get_next_path_position() - global_position
 	target_dir = target_dir.normalized()
 	
