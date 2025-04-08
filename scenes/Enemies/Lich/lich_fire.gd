@@ -26,7 +26,6 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == target:
-		print("Test")
 		is_enter = true
 		body.emit_signal("take_damage", damage)
 		

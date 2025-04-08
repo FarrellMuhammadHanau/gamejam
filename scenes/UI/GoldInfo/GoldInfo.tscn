@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdllp5w4srcju"]
+
+[ext_resource type="Texture2D" uid="uid://cqw5gavblawre" path="res://assets/Tiny Swords/UI/Banners/Banner_Connection_Right.png" id="1_0el2c"]
+[ext_resource type="Texture2D" uid="uid://cv03q78p8cnb8" path="res://assets/Tiny Swords/Resources/Resources/G_Idle.png" id="2_htiis"]
+[ext_resource type="Script" path="res://scenes/UI/GoldInfo/amount_label.gd" id="3_ntiji"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mu3xv"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="GoldInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 988.0
+offset_top = 544.0
+offset_right = 1176.0
+offset_bottom = 656.0
+texture = ExtResource("1_0el2c")
+region_rect = Rect2(0, 0, 192, 192)
+patch_margin_left = 65
+patch_margin_right = 45
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_left = 1032.0
+offset_top = 563.0
+offset_right = 1096.0
+offset_bottom = 627.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_htiis")
+expand_mode = 1
+
+[node name="AmountLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1088.0
+offset_top = 590.0
+offset_right = 1122.0
+offset_bottom = 613.0
+text = "0/10"
+label_settings = SubResource("LabelSettings_mu3xv")
+script = ExtResource("3_ntiji")

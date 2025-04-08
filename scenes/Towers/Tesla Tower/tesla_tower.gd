@@ -1,7 +1,5 @@
 extends StaticBody2D
 
-@export var level: int = 1
-
 @export var health = 1200
 @export var damage = 50
 @onready var base = $Base
@@ -13,8 +11,6 @@ signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
 signal take_damage(damage: int)
 
-const BASE_RECT = [Rect2(0, 64, 64, 128), Rect2(64, 64, 64, 128), Rect2(128, 64, 64, 128)]
-
 var idle_animation = "Idle"
 var attack_animation = "Attack"
 var is_attacking = false
@@ -25,6 +21,10 @@ var target
 func _ready() -> void:
 	health_bar.max_value = health
 	health_bar.value = health
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.emit_signal("add_tower", self)
 
 func _on_add_target(body: CharacterBody2D) -> void:
 	targets.append(body)
@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 
 func _on_weapon_frame_changed() -> void:
 	if is_attacking and weapon.frame == attack_frame:
-		print("Test")
 		blast.call_deferred("show")
 		blast.play("Explode")
 		for target in targets:

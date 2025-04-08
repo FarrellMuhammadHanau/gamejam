@@ -643,8 +643,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8gekx")
 value = 100.0
 show_percentage = false
 
+[connection signal="add_tower" from="." to="." method="_on_add_tower"]
 [connection signal="reached" from="." to="." method="_on_reached"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
+[connection signal="take_knockback" from="." to="." method="_on_take_knockback"]
 [connection signal="unreached" from="." to="." method="_on_unreached"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="AttackArea" method="_on_body_exited"]

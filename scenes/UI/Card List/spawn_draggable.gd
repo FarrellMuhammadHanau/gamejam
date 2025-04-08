@@ -6,13 +6,13 @@ extends TextureButton
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var ground_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/GroundLayer")
 @onready var select_mask: ColorRect =  get_tree().get_current_scene().get_node("WorldLayer/SelectMask")
-
+@onready var info: NinePatchRect = $Info
 
 var draggable_object: Node2D
 var is_on_button = false
 
 func _process(delta: float) -> void:
-	if Global.money < price:
+	if Global.gold < price:
 		set_deferred("disabled", true)
 	else:
 		set_deferred("disabled", false)
@@ -28,7 +28,7 @@ func _input(event) -> void:
 				select_mask.global_position = misc_layer.map_to_local(misc_tile) + Vector2(-32, -32)
 				if event is InputEventMouseButton:
 					if event.button_index == MOUSE_BUTTON_LEFT:
-						Global.money -= price
+						Global.gold -= price
 						misc_layer.set_cell(misc_tile, collection_id, Vector2i.ZERO, 1)
 						draggable_object.queue_free()
 						Global.is_holding = false
@@ -49,7 +49,8 @@ func _on_pressed() -> void:
 
 func _on_mouse_entered() -> void:
 	Global.is_on_button = true
-
+	info.visible = true
 
 func _on_mouse_exited() -> void:
 	Global.is_on_button = false
+	info.visible = false

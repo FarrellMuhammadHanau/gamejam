@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbxjrrk4wdlwb"]
+[gd_scene load_steps=25 format=3 uid="uid://dbxjrrk4wdlwb"]
 
 [ext_resource type="Texture2D" uid="uid://062fsoyi2nd3" path="res://assets/Tiny Swords/UI/Banners/Banner_Connection_Left.png" id="1_hjhed"]
 [ext_resource type="Texture2D" uid="uid://f5kn26rxuhv0" path="res://assets/Tiny Swords/UI/Banners/Carved_3Slides.png" id="3_ork1d"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpx4846p242w" path="res://scenes/Towers/Orb Tower/OrbTowerDraggable.tscn" id="7_kb4oh"]
 [ext_resource type="Texture2D" uid="uid://cjb71qmnj62mo" path="res://assets/ModifiedButton/Catapult/not pressed.png" id="8_3ik75"]
 [ext_resource type="PackedScene" uid="uid://jfpf8l2q136w" path="res://scenes/Towers/Catapult Tower/CatapultTowerDraggable.tscn" id="8_ib88s"]
+[ext_resource type="PackedScene" uid="uid://b2mpjcvyvlyp0" path="res://scenes/UI/Card List/info.tscn" id="8_yjids"]
 [ext_resource type="Texture2D" uid="uid://bo67kee0pmv2s" path="res://assets/ModifiedButton/Catapult/pressed.png" id="9_voeyq"]
 [ext_resource type="Texture2D" uid="uid://dke4cr554ordm" path="res://assets/ModifiedButton/Catapult/dissable.png" id="10_x6emf"]
 [ext_resource type="Texture2D" uid="uid://dgjp8f7vkrk4v" path="res://assets/ModifiedButton/Ballista/not pressed.png" id="12_13kya"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://i7b0mexm5bag" path="res://scenes/Towers/Tesla Tower/TeslaDraggable.tscn" id="19_6vwk5"]
 [ext_resource type="Texture2D" uid="uid://gnb2hkfvtn7j" path="res://assets/ModifiedButton/Dynamite/pressed.png" id="19_waiqh"]
 [ext_resource type="Texture2D" uid="uid://c101gnnsmw7b4" path="res://assets/ModifiedButton/Dynamite/dissable.png" id="20_0p27f"]
+[ext_resource type="PackedScene" uid="uid://bkhk77rmd3an4" path="res://scenes/Misc/Dynamite/DynamiteDraggable.tscn" id="23_ieh0t"]
 
 [node name="CardList" type="Control"]
 layout_mode = 3
@@ -44,7 +46,7 @@ texture = ExtResource("1_hjhed")
 region_rect = Rect2(3, 47, 140, 124)
 patch_margin_left = 46
 patch_margin_right = 16
-patch_margin_bottom = 126
+patch_margin_bottom = 130
 
 [node name="Carved" type="TextureRect" parent="."]
 layout_mode = 1
@@ -90,6 +92,22 @@ script = ExtResource("6_e17g5")
 draggable = ExtResource("7_kb4oh")
 price = 7
 
+[node name="Info" parent="HBoxContainer/Orb Tower" instance=ExtResource("8_yjids")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.257
+anchor_top = -2.343
+anchor_right = 2.514
+anchor_bottom = 0.5
+offset_left = -0.010025
+offset_top = 0.0100098
+offset_right = 0.0199585
+offset_bottom = 1.0
+required_gold = 7
+required_wave = 1
+title = "Orb Tower"
+
 [node name="Catapult Tower" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
@@ -102,7 +120,23 @@ stretch_mode = 0
 script = ExtResource("6_e17g5")
 draggable = ExtResource("8_ib88s")
 collection_id = 1
-price = 10
+price = 12
+
+[node name="Info" parent="HBoxContainer/Catapult Tower" instance=ExtResource("8_yjids")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.471
+anchor_top = -2.343
+anchor_right = 2.3
+anchor_bottom = 0.5
+offset_left = -0.0300217
+offset_top = 0.0100098
+offset_right = -4.57764e-05
+offset_bottom = 1.0
+required_gold = 12
+required_wave = 2
+title = "Catapult Tower"
 
 [node name="Ballista" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
@@ -116,7 +150,23 @@ stretch_mode = 0
 script = ExtResource("6_e17g5")
 draggable = ExtResource("15_vtyi1")
 collection_id = 2
-price = 17
+price = 20
+
+[node name="Info" parent="HBoxContainer/Ballista" instance=ExtResource("8_yjids")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.457
+anchor_top = -2.343
+anchor_right = 2.314
+anchor_bottom = 0.5
+offset_left = -0.0100327
+offset_top = 0.0100098
+offset_right = 0.0199585
+offset_bottom = 1.0
+required_gold = 20
+required_wave = 4
+title = "Ballista"
 
 [node name="Tesla Tower" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
@@ -130,20 +180,53 @@ stretch_mode = 0
 script = ExtResource("6_e17g5")
 draggable = ExtResource("19_6vwk5")
 collection_id = 3
-price = 15
+price = 12
+
+[node name="Info" parent="HBoxContainer/Tesla Tower" instance=ExtResource("8_yjids")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.557
+anchor_top = -2.343
+anchor_right = 2.214
+anchor_bottom = 0.5
+offset_left = -0.010025
+offset_top = 0.0100098
+offset_right = 0.0199738
+offset_bottom = 1.0
+required_gold = 12
+required_wave = 6
+title = "Tesla Tower"
 
 [node name="Dynamite" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-disabled = true
 texture_normal = ExtResource("18_v7ui7")
 texture_pressed = ExtResource("19_waiqh")
 texture_disabled = ExtResource("20_0p27f")
 stretch_mode = 0
 script = ExtResource("6_e17g5")
-collection_id = 6
+draggable = ExtResource("23_ieh0t")
+collection_id = 4
+price = 5
+
+[node name="Info" parent="HBoxContainer/Dynamite" instance=ExtResource("8_yjids")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.543
+anchor_top = -2.343
+anchor_right = 2.229
+anchor_bottom = 0.5
+offset_left = 0.00997925
+offset_top = 0.0100098
+offset_right = -0.0300293
+offset_bottom = 1.0
+required_gold = 5
+required_wave = 1
+title = "Dynamite"
 
 [connection signal="mouse_entered" from="HBoxContainer/Orb Tower" to="HBoxContainer/Orb Tower" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/Orb Tower" to="HBoxContainer/Orb Tower" method="_on_mouse_exited"]
@@ -159,3 +242,4 @@ collection_id = 6
 [connection signal="pressed" from="HBoxContainer/Tesla Tower" to="HBoxContainer/Tesla Tower" method="_on_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/Dynamite" to="HBoxContainer/Dynamite" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/Dynamite" to="HBoxContainer/Dynamite" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Dynamite" to="HBoxContainer/Dynamite" method="_on_pressed"]

@@ -1,10 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://cv7j0ktgxsopp"]
+[gd_scene load_steps=19 format=3 uid="uid://cv7j0ktgxsopp"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/ballista.gd" id="1_628jk"]
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/range.gd" id="2_bndwu"]
 [ext_resource type="Texture2D" uid="uid://o8b6ta3uhh7c" path="res://assets/Towerpack3/Towers bases/PNGs/Tower 06.png" id="3_rqd5c"]
-[ext_resource type="Texture2D" uid="uid://cvv5dka1ifkh" path="res://assets/Towerpack3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 01 - Weapon.png" id="4_7y13m"]
-[ext_resource type="Texture2D" uid="uid://b0ju3py3xi34l" path="res://assets/Towerpack3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 02 - Weapon.png" id="5_ayugl"]
 [ext_resource type="Texture2D" uid="uid://cctiapxyrythh" path="res://assets/Towerpack3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 03 - Weapon.png" id="6_m67k7"]
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/projection_spawner.gd" id="7_pbiin"]
 [ext_resource type="PackedScene" uid="uid://7pcmthq5y188" path="res://scenes/Towers/Ballista/Arrow.tscn" id="8_h8cbe"]
@@ -27,54 +25,6 @@ bg_color = Color(0, 0, 0, 0.372549)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atndf"]
 bg_color = Color(0.333333, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x187t"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moltb"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_na2qq"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khba0"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2hb8"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6hnwp"]
-atlas = ExtResource("4_7y13m")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5lkrk"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ae172"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxs23"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo7ta"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8tkr"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ro8pj"]
-atlas = ExtResource("5_ayugl")
-region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kvxm"]
 atlas = ExtResource("6_m67k7")
@@ -104,68 +54,6 @@ region = Rect2(192, 0, 96, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x187t")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_moltb")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_na2qq")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_khba0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2hb8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6hnwp")
-}],
-"loop": false,
-"name": &"Level 1 Attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x187t")
-}],
-"loop": false,
-"name": &"Level 1 Idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5lkrk")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_ae172")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_wxs23")
-}, {
-"duration": 30.0,
-"texture": SubResource("AtlasTexture_bo7ta")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p8tkr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ro8pj")
-}],
-"loop": false,
-"name": &"Level 2 Attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5lkrk")
-}],
-"loop": false,
-"name": &"Level 2 Idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0kvxm")
 }, {
 "duration": 30.0,
@@ -184,7 +72,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_y1m3b")
 }],
 "loop": false,
-"name": &"Level 3 Attack",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -192,13 +80,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_0kvxm")
 }],
 "loop": false,
-"name": &"Level 3 Idle",
+"name": &"Idle",
 "speed": 10.0
 }]
 
 [node name="Ballista" type="StaticBody2D" groups=["Tower"]]
 script = ExtResource("1_628jk")
-level = 3
 health = 1600
 
 [node name="Range" type="Area2D" parent="."]
@@ -243,7 +130,7 @@ region_rect = Rect2(128, 0, 64, 128)
 position = Vector2(0, -61)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_bpfjy")
-animation = &"Level 3 Attack"
+animation = &"Idle"
 
 [node name="ProjectionSpawner" type="Node2D" parent="Weapon"]
 position = Vector2(0, -28.4615)

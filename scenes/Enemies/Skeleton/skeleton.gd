@@ -7,6 +7,7 @@ enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 @export var health = 200
 @export var speed = 100
 @export var damage = 40
+@export var weight = 3
 
 @onready var animSprite = $AnimatedSprite2D
 @onready var pathFinder : NavigationAgent2D = $NavigationAgent2D
@@ -14,8 +15,10 @@ enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 @onready var collision = $CollisionShape2D
 
 signal take_damage(damage: int)
+signal take_knockback(anchor: Vector2, knockback: int)
 signal reached(target: Node2D)
 signal unreached(target: Node2D)
+signal add_tower(tower: StaticBody2D)
 
 var towers = []
 var closest = null
@@ -157,7 +160,6 @@ func _on_unreached(target: Node2D) -> void:
 	if target in reached_towers:
 		reached_towers.erase(target)
 
-
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if is_attacking and animSprite.frame == 4 and not is_death:
 		if is_instance_valid(closest):
@@ -167,3 +169,15 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 	move_and_slide()
+
+
+func _on_take_knockback(anchor: Vector2, knockback: int) -> void:
+	var direction = (global_position - anchor).normalized()
+	move_and_collide(direction * (knockback/weight))
+
+
+func _on_add_tower(tower: StaticBody2D) -> void:
+	if tower.is_in_group("Tower"):
+		towers.append(tower)
+		if not is_attacking:
+			closest = find_closest()

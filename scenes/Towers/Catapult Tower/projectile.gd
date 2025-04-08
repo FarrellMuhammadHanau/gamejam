@@ -3,25 +3,20 @@ extends Node2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var area_damage = $AreaDamage/CollisionShape2D
+@export var damage: int = 60
 
 var target : Node2D
-var level = 1
-var damages = [30, 45, 60]
 var is_enter = false
 var projection_animation
 var target_global_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	projection_animation = "Level %d Projection" % [level]
-	scale = Vector2(1 + (level-1.0)/5, 1 + (level-1.0)/5)
+	projection_animation = "Projection"
 	sprite.play(projection_animation)
 
 func set_target(body: Node2D):
 	target = body
-	
-func set_level(lvl : int):
-	level = lvl
 
 func _process(delta):
 	if not is_enter and target and is_instance_valid(target):
@@ -36,7 +31,7 @@ func _process(delta):
 			attack()
 
 func attack():
-	var impact_animation = "Level %d Impact" % [level]
+	var impact_animation = "Impact"
 	area_damage.call_deferred("set", "disabled", false)
 	sprite.play(impact_animation)
 	await sprite.animation_finished
@@ -50,4 +45,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_damage_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_instance_valid(body):
-		body.emit_signal("take_damage", damages[level-1])
+		body.emit_signal("take_damage", damage)

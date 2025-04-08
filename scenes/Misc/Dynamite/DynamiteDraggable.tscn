@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkhk77rmd3an4"]
+
+[ext_resource type="Script" path="res://scripts/Draggable.gd" id="1_ri2fx"]
+[ext_resource type="Texture2D" uid="uid://duwdd3ihoe865" path="res://assets/Tiny Swords/Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png" id="1_xk3ud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u534x"]
+bg_color = Color(0.705882, 0.705882, 0.705882, 0.470588)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[node name="DynamiteDraggable" type="Node2D"]
+script = ExtResource("1_ri2fx")
+
+[node name="Range" type="Panel" parent="."]
+z_index = -1
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u534x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("1_xk3ud")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
