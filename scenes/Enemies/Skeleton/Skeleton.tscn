@@ -1,6 +1,7 @@
-[gd_scene load_steps=80 format=3 uid="uid://7mw3ugjsouxo"]
+[gd_scene load_steps=81 format=3 uid="uid://7mw3ugjsouxo"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Skeleton/skeleton.gd" id="1_3tk37"]
+[ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="2_3bmhh"]
 [ext_resource type="Texture2D" uid="uid://bw5gifb5nrmpa" path="res://assets/Enemies/Skeleton/PNG/Skeleton1/Attack/Skeleton1_Attack_full.png" id="3_u24te"]
 [ext_resource type="Texture2D" uid="uid://c1jb2shd8h4rv" path="res://assets/Enemies/Skeleton/PNG/Skeleton1/Death/Skeleton1_Death_full.png" id="4_25mc0"]
 [ext_resource type="Texture2D" uid="uid://b4wutf2f5ifer" path="res://assets/Enemies/Skeleton/PNG/Skeleton1/Run/Skeleton1_Run_full.png" id="4_olqu3"]
@@ -564,6 +565,8 @@ script = ExtResource("1_3tk37")
 current_direction = 1
 health = 100
 speed = 60
+gold_spawn_rate = 10
+gold = ExtResource("2_3bmhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

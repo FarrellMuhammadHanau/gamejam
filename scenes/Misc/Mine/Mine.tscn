@@ -1,7 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo34f6x2ku7ih"]
+[gd_scene load_steps=12 format=3 uid="uid://bo34f6x2ku7ih"]
 
+[ext_resource type="Script" path="res://scenes/Misc/Mine/mine.gd" id="1_2slrg"]
 [ext_resource type="Texture2D" uid="uid://bdgcvtt1jgapn" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Inactive.png" id="1_10r3y"]
 [ext_resource type="Texture2D" uid="uid://85shp0jnmh0r" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Active.png" id="2_5sq6e"]
+[ext_resource type="Script" path="res://scenes/Misc/Mine/gold_spawner.gd" id="4_qfqa7"]
+[ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="5_8x1y3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ny4ge"]
+radius = 24.0
+height = 144.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gshfo"]
 atlas = ExtResource("1_10r3y")
@@ -30,17 +37,48 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ny4ge"]
-radius = 24.0
-height = 144.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41fco"]
+bg_color = Color(0, 0, 0, 0.372549)
 
-[node name="Mine" type="StaticBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8kjm"]
+bg_color = Color(0.333333, 0, 0, 1)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_gof8m")
-animation = &"Empty"
+[node name="Mine" type="StaticBody2D" groups=["Tower"]]
+script = ExtResource("1_2slrg")
+health = 1200
+gold_produced = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ny4ge")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gof8m")
+animation = &"Empty"
+frame_progress = 0.788836
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -72.0
+offset_right = 256.0
+offset_bottom = -45.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_41fco")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y8kjm")
+value = 100.0
+show_percentage = false
+
+[node name="GoldSpawner" type="Node2D" parent="."]
+position = Vector2(0, 48)
+script = ExtResource("4_qfqa7")
+gold = ExtResource("5_8x1y3")
+
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="spawn_gold" from="GoldSpawner" to="GoldSpawner" method="_on_spawn_gold"]

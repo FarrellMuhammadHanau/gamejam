@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2mpjcvyvlyp0"]
+[gd_scene load_steps=8 format=3 uid="uid://b2mpjcvyvlyp0"]
 
 [ext_resource type="Texture2D" uid="uid://dd75wp4v10vqd" path="res://assets/Tiny Swords/UI/Banners/Banner_Vertical.png" id="1_sfxmx"]
 [ext_resource type="Script" path="res://scenes/UI/Card List/info.gd" id="2_uj34u"]
+[ext_resource type="Texture2D" uid="uid://cv03q78p8cnb8" path="res://assets/Tiny Swords/Resources/Resources/G_Idle.png" id="3_50h6t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0mqr"]
 font_size = 20
@@ -32,6 +33,16 @@ patch_margin_right = 64
 patch_margin_bottom = 59
 script = ExtResource("2_uj34u")
 
+[node name="Gold Symbol" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_left = 54.0
+offset_top = 92.0
+offset_right = 118.0
+offset_bottom = 156.0
+texture = ExtResource("3_50h6t")
+expand_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -55,6 +66,7 @@ label_settings = SubResource("LabelSettings_y0mqr")
 
 [node name="RequirementContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="Requirements" type="Label" parent="VBoxContainer/RequirementContainer"]
 layout_mode = 2
@@ -68,12 +80,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 30
 
-[node name="Gold Info" type="Label" parent="VBoxContainer/RequirementContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/RequirementContainer/HBoxContainer"]
 layout_mode = 2
-text = "Gold 0/10"
+theme_override_constants/margin_left = 20
+
+[node name="Gold Info" type="Label" parent="VBoxContainer/RequirementContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0"
 label_settings = SubResource("LabelSettings_sf1yr")
 
 [node name="Wave Info" type="Label" parent="VBoxContainer/RequirementContainer/HBoxContainer"]
 layout_mode = 2
-text = "Wave 1/8"
+text = "Wave 1"
 label_settings = SubResource("LabelSettings_byqyr")

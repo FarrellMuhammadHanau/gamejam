@@ -3,11 +3,12 @@ extends CharacterBody2D
 enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 
 @export var current_direction = DIRECTION.RIGHT
-		
 @export var health = 200
 @export var speed = 100
 @export var damage = 40
 @export var weight = 3
+@export var gold_spawn_rate: int
+@export var gold : PackedScene
 
 @onready var animSprite = $AnimatedSprite2D
 @onready var pathFinder : NavigationAgent2D = $NavigationAgent2D
@@ -126,6 +127,12 @@ func _on_take_damage(damage: int) -> void:
 			is_death = true
 			collision.set_deferred("disabled", true)
 			update_direction(current_direction)
+			
+			if randi() % gold_spawn_rate == 0:
+				var gold_instance = gold.instantiate()
+				get_tree().get_root().call_deferred("add_child", gold_instance)
+				gold_instance.global_position = global_position
+				
 			await animSprite.animation_finished
 			call_deferred("queue_free")
 		

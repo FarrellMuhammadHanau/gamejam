@@ -1,18 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf5sbhv2smc8v"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5sbhv2smc8v"]
 
 [ext_resource type="Texture2D" uid="uid://bcshgitah03l2" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Destroyed.png" id="1_q7mqm"]
+[ext_resource type="Script" path="res://scenes/Misc/Mine/destroyed_mine.gd" id="1_t3ul7"]
+[ext_resource type="PackedScene" uid="uid://ce7axobfsgc64" path="res://scenes/Misc/Mine/BuildMineUI.tscn" id="3_psomn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3axu"]
-radius = 24.0
+radius = 15.0
 height = 144.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3hocc"]
 
 [node name="DestroyedMine" type="StaticBody2D"]
 position = Vector2(0, -8)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_q7mqm")
+script = ExtResource("1_t3ul7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, 24)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p3axu")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickArea"]
+polygon = PackedVector2Array(-40, -32, -48, -32, -64, -16, -72, 0, -80, 24, -64, 40, 56, 40, 80, 24, 72, 8, 64, -16, 48, -32, 24, -40, -8, -40, -32, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+material = SubResource("CanvasItemMaterial_3hocc")
+texture = ExtResource("1_q7mqm")
+
+[node name="BuildMineUi" parent="." instance=ExtResource("3_psomn")]
+visible = false
+z_index = 1
+position = Vector2(7, -127)
+scale = Vector2(1.2, 1.2)
+
+[connection signal="build" from="." to="." method="_on_build"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]

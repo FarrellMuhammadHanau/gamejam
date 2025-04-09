@@ -1,9 +1,10 @@
-[gd_scene load_steps=98 format=3 uid="uid://3ucp1fyr4mf0"]
+[gd_scene load_steps=99 format=3 uid="uid://3ucp1fyr4mf0"]
 
 [ext_resource type="Texture2D" uid="uid://dhrxd7kxqhki" path="res://assets/Enemies/Beholder/PNG/Beholder1/Attack/Beholder1_Attack_full.png" id="1_j27r5"]
 [ext_resource type="Script" path="res://scenes/Enemies/Beholder/attack_area.gd" id="1_k2mbd"]
 [ext_resource type="Script" path="res://scenes/Enemies/Beholder/beholder.gd" id="1_ugqww"]
 [ext_resource type="Texture2D" uid="uid://cmcngter4gev0" path="res://assets/Enemies/Beholder/PNG/Beholder1/Death/Beholder1_Death_full.png" id="2_5movr"]
+[ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="2_5vhqi"]
 [ext_resource type="Texture2D" uid="uid://dyxanbxopt0tg" path="res://assets/Enemies/Beholder/PNG/Beholder1/Run/Beholder1_Run_full.png" id="3_odsos"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yn1s"]
@@ -683,6 +684,8 @@ script = ExtResource("1_ugqww")
 health = 200
 speed = 120
 damage = 50
+gold_spawn_rate = 7
+gold = ExtResource("2_5vhqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

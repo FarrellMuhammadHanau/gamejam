@@ -1,9 +1,10 @@
-[gd_scene load_steps=86 format=3 uid="uid://b3hwlllic882j"]
+[gd_scene load_steps=87 format=3 uid="uid://b3hwlllic882j"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Golem/golem.gd" id="1_1l2cc"]
 [ext_resource type="Texture2D" uid="uid://ofec5yw27ue0" path="res://assets/Enemies/Golem/PNG/Golem2/Attack/Golem2_Attack_full.png" id="1_ttio2"]
 [ext_resource type="Script" path="res://scenes/Enemies/Golem/attack_area.gd" id="2_dr74r"]
 [ext_resource type="Texture2D" uid="uid://ba07e0buvxse3" path="res://assets/Enemies/Golem/PNG/Golem2/Death/Golem2_Death_full.png" id="2_qdv7b"]
+[ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="2_rw6qk"]
 [ext_resource type="Texture2D" uid="uid://bki61i1gql6ik" path="res://assets/Enemies/Golem/PNG/Golem2/Walk/Golem2_Walk_full.png" id="3_25pc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fnff2"]
@@ -606,6 +607,8 @@ script = ExtResource("1_1l2cc")
 health = 3000
 speed = 25
 damage = 70
+gold_spawn_rate = 1
+gold = ExtResource("2_rw6qk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

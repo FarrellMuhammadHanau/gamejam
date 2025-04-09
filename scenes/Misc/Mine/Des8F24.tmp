@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf5sbhv2smc8v"]
+
+[ext_resource type="Texture2D" uid="uid://bcshgitah03l2" path="res://assets/Tiny Swords/Resources/Gold Mine/GoldMine_Destroyed.png" id="1_q7mqm"]
+[ext_resource type="Script" path="res://scenes/Misc/Mine/destroyed_mine.gd" id="1_t3ul7"]
+[ext_resource type="Script" path="res://scenes/Misc/Mine/sprite_2d.gd" id="3_qefsf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3axu"]
+radius = 24.0
+height = 144.0
+
+[node name="DestroyedMine" type="StaticBody2D"]
+position = Vector2(0, -8)
+script = ExtResource("1_t3ul7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p3axu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q7mqm")
+script = ExtResource("3_qefsf")

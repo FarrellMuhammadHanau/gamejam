@@ -13,7 +13,7 @@ bg_color = Color(0, 0, 0, 0.372549)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gmdj"]
 bg_color = Color(0.333333, 0, 0, 1)
 
-[node name="Castle" type="StaticBody2D" groups=["Tower"]]
+[node name="Castle" type="StaticBody2D" groups=["Castle", "Tower"]]
 position = Vector2(0, -64)
 collision_layer = 3
 collision_mask = 0
