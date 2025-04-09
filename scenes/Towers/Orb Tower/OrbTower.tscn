@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://140cwmlvmpo5"]
+[gd_scene load_steps=30 format=3 uid="uid://140cwmlvmpo5"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/orb_tower.gd" id="1_ald6h"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/range.gd" id="2_fhlse"]
 [ext_resource type="Texture2D" uid="uid://dj0arnbs8f0jr" path="res://assets/Towerpack1/Towers bases/PNGs/Tower 02.png" id="3_3jqlu"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="3_c4mc4"]
+[ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="4_hbfrl"]
 [ext_resource type="Texture2D" uid="uid://db1c3ju34jivp" path="res://assets/Towerpack1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 03 - Weapon.png" id="6_vo3tx"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/projection_spawner.gd" id="7_8c6w4"]
 [ext_resource type="PackedScene" uid="uid://dgoocohbvqsli" path="res://scenes/Towers/Orb Tower/Orb.tscn" id="8_wfwti"]
@@ -20,11 +22,9 @@ corner_radius_bottom_left = 999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jl1o"]
 size = Vector2(64, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqjh4"]
-bg_color = Color(0, 0, 0, 0.372549)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e373x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p25c"]
-bg_color = Color(0.333333, 0, 0, 1)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqnqo"]
 atlas = ExtResource("6_vo3tx")
@@ -173,30 +173,32 @@ offset_left = -400.0
 offset_top = -408.0
 offset_right = 400.0
 offset_bottom = 400.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y82am")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0jl1o")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -34.0
-offset_top = -106.0
-offset_right = 306.0
-offset_bottom = -79.0
-scale = Vector2(0.2, 0.2)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_mqjh4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_1p25c")
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -51.0
+offset_top = -117.0
+offset_right = 1807.0
+offset_bottom = 15.0
+scale = Vector2(0.055, 0.2)
 value = 100.0
-show_percentage = false
+texture_under = ExtResource("3_c4mc4")
+texture_progress = ExtResource("4_hbfrl")
+texture_progress_offset = Vector2(100, 42)
 
 [node name="Base" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_e373x")
 position = Vector2(0, -32)
 texture = ExtResource("3_3jqlu")
 region_enabled = true
 region_rect = Rect2(128, 64, 64, 128)
 
 [node name="Weapon" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_5xgxm")
 position = Vector2(0, -85)
 sprite_frames = SubResource("SpriteFrames_n31pi")
 animation = &"Idle"
@@ -206,6 +208,11 @@ position = Vector2(0, -85)
 script = ExtResource("7_8c6w4")
 projection = ExtResource("8_wfwti")
 
+[node name="MouseArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
+polygon = PackedVector2Array(0, -111, -13, -87, -13, -83, -20, -83, -20, -95, -25, -92, -26, -55, -33, -33, -32, 32, 31, 32, 32, -34, 26, -54, 26, -91, 21, -95, 20, -84, 14, -84)
+
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -213,3 +220,5 @@ projection = ExtResource("8_wfwti")
 [connection signal="body_exited" from="Range" to="Range" method="_on_body_exited"]
 [connection signal="frame_changed" from="Weapon" to="." method="_on_weapon_frame_changed"]
 [connection signal="spawn" from="ProjectionSpawner" to="ProjectionSpawner" method="_on_spawn"]
+[connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
+[connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]

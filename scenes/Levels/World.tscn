@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://uvnrymjo5do2"]
+[gd_scene load_steps=42 format=4 uid="uid://uvnrymjo5do2"]
 
 [ext_resource type="Script" path="res://scenes/Levels/world.gd" id="1_jmi4n"]
 [ext_resource type="Texture2D" uid="uid://3p3lne2wswb3" path="res://assets/Tiny Swords/Terrain/Ground/Tilemap_Elevation.png" id="2_d81xk"]
@@ -12,9 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://c3m61aoygxdkm" path="res://scenes/Enemies/Lich/Lich.tscn" id="16_84mbi"]
 [ext_resource type="PackedScene" uid="uid://cv7j0ktgxsopp" path="res://scenes/Towers/Ballista/Ballista.tscn" id="16_au2q6"]
 [ext_resource type="PackedScene" uid="uid://3ucp1fyr4mf0" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="17_2e4p4"]
+[ext_resource type="PackedScene" uid="uid://bqo7rfhnmtwyx" path="res://scenes/Enemies/Spawner/spawner.tscn" id="19_a44t5"]
 [ext_resource type="PackedScene" uid="uid://bdllp5w4srcju" path="res://scenes/UI/GoldInfo/GoldInfo.tscn" id="20_m52va"]
 [ext_resource type="Script" path="res://scenes/Levels/camera_2d.gd" id="21_oytat"]
 [ext_resource type="PackedScene" uid="uid://ch7aa4aair64q" path="res://scenes/Misc/Castle/Castle.tscn" id="21_w14hc"]
+[ext_resource type="PackedScene" uid="uid://dwynmoq1bqfyy" path="res://scenes/UI/Wave Bar/WaveInfo.tscn" id="22_2k16m"]
 [ext_resource type="PackedScene" uid="uid://eaticueknsn7" path="res://scenes/Misc/filler.tscn" id="22_j1ism"]
 [ext_resource type="PackedScene" uid="uid://cf5sbhv2smc8v" path="res://scenes/Misc/Mine/DestroyedMine.tscn" id="23_vq6rx"]
 [ext_resource type="PackedScene" uid="uid://bo34f6x2ku7ih" path="res://scenes/Misc/Mine/Mine.tscn" id="24_3xu32"]
@@ -498,7 +500,7 @@ tile_set = SubResource("TileSet_qptls")
 
 [node name="MiscLayer" type="TileMapLayer" parent="WorldLayer"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AADv/wYABgAAAAAABADv/wgABgAAAAAABAD0/wMABgAAAAAABAD0/wQABgAAAAAABAD2/wUABgAAAAAABAD1/wQABgAAAAAABADz/wUABgAAAAAABADx/wcABgAAAAAABADx/wgABgAAAAAABADv/woABgAAAAAABADw/wgABgAAAAAABADx/wQABgAAAAAABADy/wMABgAAAAAABAD6/wMABgAAAAAABAD4/wQABgAAAAAABAD3/wMABgAAAAAABAD3/wQABgAAAAAABAD4/wYABgAAAAAABAD3/wYABgAAAAAABAD2/wYABgAAAAAABAD1/wUABgAAAAAABADz/wYABgAAAAAABADx/wUABgAAAAAABADy/wYABgAAAAAABAD5/wIABgAAAAAABAD8/wIABgAAAAAABAD7/wIABgAAAAAABAD+/wIABgAAAAAABAD+/wAABgAAAAAABAD9/wAABgAAAAAABAD9/wEABgAAAAAABAABAAAABgAAAAAABAAAAAEABgAAAAAABAD//wAABgAAAAAABAAAAAIABgAAAAAABAADAP//BgAAAAAABAAGAP//BgAAAAAABAAHAP7/BgAAAAAABAAFAP7/BgAAAAAABAAFAAAABgAAAAAABAAEAAAABgAAAAAABAACAP//BgAAAAAABAAIAAAABgAAAAAABAAIAP7/BgAAAAAABAAKAP7/BgAAAAAABAAJAP//BgAAAAAABAAKAAAABgAAAAAABAAMAAAABgAAAAAABAALAP//BgAAAAAABAAOAAEABgAAAAAABAANAAAABgAAAAAABAANAAEABgAAAAAABAAPAAMABgAAAAAABAAOAAIABgAAAAAABAAPAAEABgAAAAAABAASAAIABgAAAAAABAASAAQABgAAAAAABAARAAIABgAAAAAABAATAAMABgAAAAAABAATAAUABgAAAAAABAAUAAQABgAAAAAABAAVAAQABgAAAAAABAAVAAUABgAAAAAABAAUAAYABgAAAAAABAAXAAUABgAAAAAABAAZAAYABgAAAAAABAAXAAYABgAAAAAABAAWAAYABgAAAAAABAAbAAYABgAAAAAABAAdAAYABgAAAAAABAAcAAYABgAAAAAABAAeAAgABgAAAAAABAAeAAcABgAAAAAABAAgAAgABgAAAAAABAAhAAgABgAAAAAABAAgAAkABgAAAAAABAAhAAsABgAAAAAABAAgAAoABgAAAAAABAAfAAoABgAAAAAABAAgAAUABgAAAAAABAAgAAMABgAAAAAABAAfAAMABgAAAAAABAAeAAIABgAAAAAABAAeAAEABgAAAAAABAAcAAAABgAAAAAABAAbAAAABgAAAAAABAAbAAIABgAAAAAABAAZAAIABgAAAAAABAAZAAEABgAAAAAABAAdAAMABgAAAAAABAAcAAIABgAAAAAABAAYAAEABgAAAAAABAAUAP//BgAAAAAABAAUAAAABgAAAAAABAAWAAAABgAAAAAABAAWAAEABgAAAAAABAATAP7/BgAAAAAABAARAP7/BgAAAAAABAARAPz/BgAAAAAABAARAP3/BgAAAAAABAAOAPv/BgAAAAAABAAOAPz/BgAAAAAABAAPAPv/BgAAAAAABAAQAPr/BgAAAAAABAANAPr/BgAAAAAABAALAPr/BgAAAAAABAAJAPr/BgAAAAAABAAJAPv/BgAAAAAABAAIAPr/BgAAAAAABAAFAPr/BgAAAAAABAAMAPv/BgAAAAAABAAQAP3/BgAAAAAABAAQAP//BgAAAAAABAAGAPv/BgAAAAAABAACAPr/BgAAAAAABAACAPv/BgAAAAAABAAAAPr/BgAAAAAABAD+//r/BgAAAAAABAD+//z/BgAAAAAABAD9//z/BgAAAAAABAD8//3/BgAAAAAABAD7//7/BgAAAAAABAD8//7/BgAAAAAABAD6////BgAAAAAABAD4////BgAAAAAABAD3////BgAAAAAABAD1////BgAAAAAABADz/wAABgAAAAAABAD1/wAABgAAAAAABAD3/wAABgAAAAAABADy////BgAAAAAABADw/wEABgAAAAAABADv/wAABgAAAAAABADv/wIABgAAAAAABADw/wIABgAAAAAABADv//z/BgAAAAAABADx//r/BgAAAAAABADz//v/BgAAAAAABADx//z/BgAAAAAABADw//3/BgAAAAAABADw//r/BgAAAAAABADw//v/BgAAAAAABADy//n/BgAAAAAABADw//f/BgAAAAAABADv//j/BgAAAAAABADw//j/BgAAAAAABADy//f/BgAAAAAABADv//n/BgAAAAAABAD1//n/BgAAAAAABAD1//j/BgAAAAAA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ZAAEAA8ABgAAAAAAZAAFAA8ABgAAAAAAZAAGAA8ABgAAAAAAZAAHAA8ABgAAAAAAZAAIAA8ABgAAAAAAZAAJAA8ABgAAAAAAZAAKAA8ABgAAAAAAZAALAA8ABgAAAAAAZAAMAA8ABgAAAAAAZAANAA8ABgAAAAAAZAAOAA8ABgAAAAAAZAAPAA8ABgAAAAAAZAAQAA8ABgAAAAAAZAARAA8ABgAAAAAAZAASAA8ABgAAAAAAZAAUAA8ABgAAAAAAZAAVAA8ABgAAAAAAZAAWAA8ABgAAAAAAZAAXAA8ABgAAAAAAZAAYAA8ABgAAAAAAZAAZAA8ABgAAAAAAZAAaAA8ABgAAAAAAZAAbAA8ABgAAAAAAZAAcAA8ABgAAAAAAZAAdAA8ABgAAAAAAZAAeAA8ABgAAAAAAZAAfAA8ABgAAAAAAZAAgAA8ABgAAAAAAZAAhAA8ABgAAAAAAZAAFAAMABgAAAAAAZAAGAAMABgAAAAAAZAAAAAUABgAAAAAAZAD+/wUABgAAAAAAZAALAAMABgAAAAAAAwADAA0ABgAAAAAABAADAA4ABQAAAAAAAQAEAA4ABQAAAAAAAQAFAA4ABQAAAAAAAQAGAA4ABQAAAAAAAQAHAA4ABQAAAAAAAQAIAA4ABQAAAAAAAQAJAA4ABQAAAAAAAQAKAA4ABQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AADv/wYABgAAAAAABADv/wgABgAAAAAABAD0/wMABgAAAAAABAD0/wQABgAAAAAABAD2/wUABgAAAAAABAD1/wQABgAAAAAABADz/wUABgAAAAAABADx/wcABgAAAAAABADx/wgABgAAAAAABADv/woABgAAAAAABADw/wgABgAAAAAABADx/wQABgAAAAAABADy/wMABgAAAAAABAD6/wMABgAAAAAABAD4/wQABgAAAAAABAD3/wMABgAAAAAABAD3/wQABgAAAAAABAD4/wYABgAAAAAABAD3/wYABgAAAAAABAD2/wYABgAAAAAABAD1/wUABgAAAAAABADz/wYABgAAAAAABADx/wUABgAAAAAABADy/wYABgAAAAAABAD5/wIABgAAAAAABAD8/wIABgAAAAAABAD7/wIABgAAAAAABAD+/wIABgAAAAAABAD+/wAABgAAAAAABAD9/wAABgAAAAAABAD9/wEABgAAAAAABAABAAAABgAAAAAABAAAAAEABgAAAAAABAD//wAABgAAAAAABAAAAAIABgAAAAAABAADAP//BgAAAAAABAAGAP//BgAAAAAABAAHAP7/BgAAAAAABAAFAP7/BgAAAAAABAAFAAAABgAAAAAABAAEAAAABgAAAAAABAACAP//BgAAAAAABAAIAAAABgAAAAAABAAIAP7/BgAAAAAABAAKAP7/BgAAAAAABAAJAP//BgAAAAAABAAKAAAABgAAAAAABAAMAAAABgAAAAAABAALAP//BgAAAAAABAAOAAEABgAAAAAABAANAAAABgAAAAAABAANAAEABgAAAAAABAAPAAMABgAAAAAABAAOAAIABgAAAAAABAAPAAEABgAAAAAABAASAAIABgAAAAAABAASAAQABgAAAAAABAARAAIABgAAAAAABAATAAMABgAAAAAABAATAAUABgAAAAAABAAUAAQABgAAAAAABAAVAAQABgAAAAAABAAVAAUABgAAAAAABAAUAAYABgAAAAAABAAXAAUABgAAAAAABAAZAAYABgAAAAAABAAXAAYABgAAAAAABAAWAAYABgAAAAAABAAbAAYABgAAAAAABAAdAAYABgAAAAAABAAcAAYABgAAAAAABAAeAAgABgAAAAAABAAeAAcABgAAAAAABAAgAAgABgAAAAAABAAhAAgABgAAAAAABAAgAAkABgAAAAAABAAhAAsABgAAAAAABAAgAAoABgAAAAAABAAfAAoABgAAAAAABAAgAAUABgAAAAAABAAgAAMABgAAAAAABAAfAAMABgAAAAAABAAeAAIABgAAAAAABAAeAAEABgAAAAAABAAcAAAABgAAAAAABAAbAAAABgAAAAAABAAbAAIABgAAAAAABAAZAAIABgAAAAAABAAZAAEABgAAAAAABAAdAAMABgAAAAAABAAcAAIABgAAAAAABAAYAAEABgAAAAAABAAUAP//BgAAAAAABAAUAAAABgAAAAAABAAWAAAABgAAAAAABAAWAAEABgAAAAAABAATAP7/BgAAAAAABAARAP7/BgAAAAAABAARAPz/BgAAAAAABAARAP3/BgAAAAAABAAOAPv/BgAAAAAABAAOAPz/BgAAAAAABAAPAPv/BgAAAAAABAAQAPr/BgAAAAAABAANAPr/BgAAAAAABAALAPr/BgAAAAAABAAJAPr/BgAAAAAABAAJAPv/BgAAAAAABAAIAPr/BgAAAAAABAAFAPr/BgAAAAAABAAMAPv/BgAAAAAABAAQAP3/BgAAAAAABAAQAP//BgAAAAAABAAGAPv/BgAAAAAABAACAPr/BgAAAAAABAACAPv/BgAAAAAABAAAAPr/BgAAAAAABAD+//r/BgAAAAAABAD+//z/BgAAAAAABAD9//z/BgAAAAAABAD8//3/BgAAAAAABAD7//7/BgAAAAAABAD8//7/BgAAAAAABAD6////BgAAAAAABAD4////BgAAAAAABAD3////BgAAAAAABAD1////BgAAAAAABADz/wAABgAAAAAABAD1/wAABgAAAAAABAD3/wAABgAAAAAABADy////BgAAAAAABADw/wEABgAAAAAABADv/wAABgAAAAAABADv/wIABgAAAAAABADw/wIABgAAAAAABADv//z/BgAAAAAABADx//r/BgAAAAAABADz//v/BgAAAAAABADx//z/BgAAAAAABADw//3/BgAAAAAABADw//r/BgAAAAAABADw//v/BgAAAAAABADy//n/BgAAAAAABADw//f/BgAAAAAABADv//j/BgAAAAAABADw//j/BgAAAAAABADy//f/BgAAAAAABADv//n/BgAAAAAABAD1//n/BgAAAAAABAD1//j/BgAAAAAA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")
 tile_set = SubResource("TileSet_4rfhk")
 
 [node name="SelectMask" type="ColorRect" parent="WorldLayer"]
@@ -507,6 +509,26 @@ offset_top = -24.0
 offset_right = -1288.0
 offset_bottom = 40.0
 color = Color(1, 1, 1, 0.470588)
+
+[node name="EnemiesSpawners" type="Node2D" parent="."]
+
+[node name="Spawner1" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(96, 1064)
+
+[node name="Spawner2" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(736, 1056)
+
+[node name="Spawner3" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(-864, 1056)
+
+[node name="Spawner4" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(1896, 1056)
+
+[node name="Spawner5" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(-544, -288)
+
+[node name="Spawner6" parent="EnemiesSpawners" instance=ExtResource("19_a44t5")]
+position = Vector2(1568, -352)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 192)
@@ -523,49 +545,12 @@ script = ExtResource("21_oytat")
 
 [node name="CardList" parent="CanvasLayer" instance=ExtResource("26_lwi8e")]
 
+[node name="WaveInfo" parent="CanvasLayer" instance=ExtResource("22_2k16m")]
+
+[connection signal="remove_enemy" from="." to="." method="_on_remove_enemy"]
 [connection signal="build" from="WorldLayer/MiscLayer/DestroyedMine" to="WorldLayer/MiscLayer/DestroyedMine" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@113599" to="WorldLayer/MiscLayer/@StaticBody2D@113599" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@113603" to="WorldLayer/MiscLayer/@StaticBody2D@113603" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@113604" to="WorldLayer/MiscLayer/@StaticBody2D@113604" method="_on_build"]
+[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@90203" to="WorldLayer/MiscLayer/@StaticBody2D@90203" method="_on_build"]
+[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@90207" to="WorldLayer/MiscLayer/@StaticBody2D@90207" method="_on_build"]
+[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@90208" to="WorldLayer/MiscLayer/@StaticBody2D@90208" method="_on_build"]
 [connection signal="take_damage" from="WorldLayer/MiscLayer/Castle" to="WorldLayer/MiscLayer/Castle" method="_on_take_damage"]
 [connection signal="take_damage" from="WorldLayer/MiscLayer/Mine" to="WorldLayer/MiscLayer/Mine" method="_on_take_damage"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/Skeleton" to="WorldLayer/MiscLayer/Skeleton" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/Skeleton" to="WorldLayer/MiscLayer/Skeleton" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/Skeleton" to="WorldLayer/MiscLayer/Skeleton" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/Skeleton" to="WorldLayer/MiscLayer/Skeleton" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/Skeleton" to="WorldLayer/MiscLayer/Skeleton" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114684" to="WorldLayer/MiscLayer/@CharacterBody2D@114684" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114684" to="WorldLayer/MiscLayer/@CharacterBody2D@114684" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114684" to="WorldLayer/MiscLayer/@CharacterBody2D@114684" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114684" to="WorldLayer/MiscLayer/@CharacterBody2D@114684" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114684" to="WorldLayer/MiscLayer/@CharacterBody2D@114684" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114685" to="WorldLayer/MiscLayer/@CharacterBody2D@114685" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114685" to="WorldLayer/MiscLayer/@CharacterBody2D@114685" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114685" to="WorldLayer/MiscLayer/@CharacterBody2D@114685" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114685" to="WorldLayer/MiscLayer/@CharacterBody2D@114685" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114685" to="WorldLayer/MiscLayer/@CharacterBody2D@114685" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114686" to="WorldLayer/MiscLayer/@CharacterBody2D@114686" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114686" to="WorldLayer/MiscLayer/@CharacterBody2D@114686" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114686" to="WorldLayer/MiscLayer/@CharacterBody2D@114686" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114686" to="WorldLayer/MiscLayer/@CharacterBody2D@114686" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114686" to="WorldLayer/MiscLayer/@CharacterBody2D@114686" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114687" to="WorldLayer/MiscLayer/@CharacterBody2D@114687" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114687" to="WorldLayer/MiscLayer/@CharacterBody2D@114687" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114687" to="WorldLayer/MiscLayer/@CharacterBody2D@114687" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114687" to="WorldLayer/MiscLayer/@CharacterBody2D@114687" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114687" to="WorldLayer/MiscLayer/@CharacterBody2D@114687" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114688" to="WorldLayer/MiscLayer/@CharacterBody2D@114688" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114688" to="WorldLayer/MiscLayer/@CharacterBody2D@114688" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114688" to="WorldLayer/MiscLayer/@CharacterBody2D@114688" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114688" to="WorldLayer/MiscLayer/@CharacterBody2D@114688" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114688" to="WorldLayer/MiscLayer/@CharacterBody2D@114688" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114689" to="WorldLayer/MiscLayer/@CharacterBody2D@114689" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114689" to="WorldLayer/MiscLayer/@CharacterBody2D@114689" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114689" to="WorldLayer/MiscLayer/@CharacterBody2D@114689" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114689" to="WorldLayer/MiscLayer/@CharacterBody2D@114689" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114689" to="WorldLayer/MiscLayer/@CharacterBody2D@114689" method="_on_unreached"]
-[connection signal="add_tower" from="WorldLayer/MiscLayer/@CharacterBody2D@114690" to="WorldLayer/MiscLayer/@CharacterBody2D@114690" method="_on_add_tower"]
-[connection signal="reached" from="WorldLayer/MiscLayer/@CharacterBody2D@114690" to="WorldLayer/MiscLayer/@CharacterBody2D@114690" method="_on_reached"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/@CharacterBody2D@114690" to="WorldLayer/MiscLayer/@CharacterBody2D@114690" method="_on_take_damage"]
-[connection signal="take_knockback" from="WorldLayer/MiscLayer/@CharacterBody2D@114690" to="WorldLayer/MiscLayer/@CharacterBody2D@114690" method="_on_take_knockback"]
-[connection signal="unreached" from="WorldLayer/MiscLayer/@CharacterBody2D@114690" to="WorldLayer/MiscLayer/@CharacterBody2D@114690" method="_on_unreached"]

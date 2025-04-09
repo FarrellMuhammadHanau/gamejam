@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @export var health: int
-@onready var health_bar = $HealthBar
+@onready var health_bar: TextureProgressBar = $HealthBar
 signal take_damage(damage: int)
 
 func _ready() -> void:

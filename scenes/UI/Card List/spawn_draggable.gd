@@ -3,6 +3,7 @@ extends TextureButton
 @export var draggable: PackedScene
 @export var collection_id: int
 @export var price: int
+@export var required_wave: int
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var ground_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/GroundLayer")
 @onready var select_mask: ColorRect =  get_tree().get_current_scene().get_node("WorldLayer/SelectMask")
@@ -12,7 +13,7 @@ var draggable_object: Node2D
 var is_on_button = false
 
 func _process(delta: float) -> void:
-	if Global.gold < price:
+	if Global.gold < price or Global.wave < required_wave:
 		set_deferred("disabled", true)
 	else:
 		set_deferred("disabled", false)
@@ -40,12 +41,19 @@ func _on_pressed() -> void:
 	if not Global.is_holding and not draggable_object:
 		draggable_object = draggable.instantiate()
 		get_tree().current_scene.add_child(draggable_object)
+		Global.current_dragabble = draggable_object
 		Global.is_holding = true
+		
+	elif Global.is_holding and not draggable_object and is_instance_valid(Global.current_dragabble):
+		Global.current_dragabble.queue_free()
+		draggable_object = draggable.instantiate()
+		get_tree().current_scene.add_child(draggable_object)
+		Global.current_dragabble = draggable_object
+		
 	elif is_instance_valid(draggable_object):
 		draggable_object.queue_free()
 		Global.is_holding = false
 		select_mask.set_deferred("visible", false)
-
 
 func _on_mouse_entered() -> void:
 	Global.is_on_button = true

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwynmoq1bqfyy"]
+
+[ext_resource type="Texture2D" uid="uid://cwuywbcph56sw" path="res://assets/HealthBar/Textures/Bar 2/LoadingBar_2_Background.png" id="1_3ghs0"]
+[ext_resource type="Texture2D" uid="uid://dg3hxb1vt0r1y" path="res://assets/Tiny Swords/UI/Banners/Banner_Connection_Up.png" id="1_8f813"]
+[ext_resource type="Texture2D" uid="uid://f5kn26rxuhv0" path="res://assets/Tiny Swords/UI/Banners/Carved_3Slides.png" id="2_1eo40"]
+[ext_resource type="Texture2D" uid="uid://cp8xvlqsnrbx6" path="res://assets/HealthBar/Textures/Bar 2/LoadingBar_2_Fill_Red.png" id="2_cj8fr"]
+[ext_resource type="Script" path="res://scenes/UI/Wave Bar/wave_label.gd" id="5_1nhky"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxq55"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="WaveInfo" type="Node2D"]
+
+[node name="Banner" type="NinePatchRect" parent="."]
+offset_left = 176.0
+offset_top = -56.0
+offset_right = 977.0
+offset_bottom = 120.0
+texture = ExtResource("1_8f813")
+patch_margin_left = 80
+patch_margin_top = 50
+patch_margin_right = 80
+patch_margin_bottom = 55
+
+[node name="Carve" type="NinePatchRect" parent="."]
+offset_left = 228.0
+offset_top = -2.0
+offset_right = 924.0
+offset_bottom = 60.0
+texture = ExtResource("2_1eo40")
+
+[node name="WaveBar" type="TextureProgressBar" parent="."]
+offset_left = 257.0
+offset_top = 16.0
+offset_right = 2081.0
+offset_bottom = 148.0
+scale = Vector2(0.35, 0.3)
+value = 100.0
+texture_under = ExtResource("1_3ghs0")
+texture_progress = ExtResource("2_cj8fr")
+texture_progress_offset = Vector2(55, 25)
+
+[node name="WaveLabel" type="Label" parent="."]
+offset_left = 564.0
+offset_top = 4.0
+offset_right = 589.0
+offset_bottom = 27.0
+text = "0/6"
+label_settings = SubResource("LabelSettings_wxq55")
+script = ExtResource("5_1nhky")

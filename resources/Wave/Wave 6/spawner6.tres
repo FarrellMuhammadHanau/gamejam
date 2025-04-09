@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="1_t8jq2"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner6.gd" id="2_4ra5a"]
+
+[resource]
+script = ExtResource("2_4ra5a")
+enemies = [[ExtResource("1_t8jq2"), 25], [ExtResource("1_t8jq2"), 5], [ExtResource("1_t8jq2"), 5], [ExtResource("1_t8jq2"), 5], [ExtResource("1_t8jq2"), 5], [ExtResource("1_t8jq2"), 5], [ExtResource("1_t8jq2"), 2], [ExtResource("1_t8jq2"), 2], [ExtResource("1_t8jq2"), 2], [ExtResource("1_t8jq2"), 2], [ExtResource("1_t8jq2"), 2], [ExtResource("1_t8jq2"), 0.1], [ExtResource("1_t8jq2"), 0.1], [ExtResource("1_t8jq2"), 0.1]]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_csseo"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 2/spawner3.gd" id="2_m41mj"]
+
+[resource]
+script = ExtResource("2_m41mj")
+enemies = [[ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 15], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 15], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 15], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1], [ExtResource("1_csseo"), 0.1]]

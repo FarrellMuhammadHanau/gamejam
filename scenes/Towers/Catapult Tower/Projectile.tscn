@@ -122,7 +122,7 @@ radius = 9.05539
 radius = 40.0
 
 [node name="Projectile" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_1ioob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -144,5 +144,4 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_t78rx")
 disabled = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]

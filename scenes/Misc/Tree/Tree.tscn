@@ -43,6 +43,7 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_up1r5")
+autoplay = "default"
 frame_progress = 0.869674
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

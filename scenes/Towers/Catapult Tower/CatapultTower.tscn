@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://cmaoex6yntqwa"]
+[gd_scene load_steps=33 format=3 uid="uid://cmaoex6yntqwa"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/catapult_tower.gd" id="1_76d8u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/range.gd" id="2_ah8je"]
 [ext_resource type="Script" path="res://godot-donut-collision-polygon-2d-7780d026ae3d4a37fe68f43cc1f97ba664dd775d/addons/donut_collision_polygon2D/donut_collision_polygon2D.gd" id="3_toqbp"]
 [ext_resource type="Texture2D" uid="uid://dxrh2xdhwjtri" path="res://assets/Towerpack2/Towers bases/PNGs/Tower 04.png" id="4_hixga"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="4_omhlp"]
+[ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="5_wx5tc"]
 [ext_resource type="Texture2D" uid="uid://ch1su8mw3l034" path="res://assets/Towerpack2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Weapon.png" id="7_n4w2u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/projection_spawner.gd" id="8_o0ibc"]
 [ext_resource type="PackedScene" uid="uid://7sbush60w3i0" path="res://scenes/Towers/Catapult Tower/Projectile.tscn" id="9_ujg82"]
@@ -25,11 +27,9 @@ corner_radius_bottom_left = 1024
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27ggs"]
 size = Vector2(64, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqior"]
-bg_color = Color(0, 0, 0, 0.372549)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c5exn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3qsn"]
-bg_color = Color(0.333333, 0, 0, 1)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_if4jc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2ahw"]
 atlas = ExtResource("7_n4w2u")
@@ -192,6 +192,7 @@ offset_left = -800.0
 offset_top = -800.0
 offset_right = 800.0
 offset_bottom = 800.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vypdx")
 
 [node name="Blindspot" type="Panel" parent="RangeIndicator"]
@@ -200,30 +201,32 @@ offset_left = -200.0
 offset_top = -200.0
 offset_right = 200.0
 offset_bottom = 200.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_srxlk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_27ggs")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -34.0
-offset_top = -103.0
-offset_right = 306.0
-offset_bottom = -76.0
-scale = Vector2(0.2, 0.2)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_eqior")
-theme_override_styles/fill = SubResource("StyleBoxFlat_v3qsn")
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -51.0
+offset_top = -115.0
+offset_right = 1807.0
+offset_bottom = 17.0
+scale = Vector2(0.055, 0.2)
 value = 100.0
-show_percentage = false
+texture_under = ExtResource("4_omhlp")
+texture_progress = ExtResource("5_wx5tc")
+texture_progress_offset = Vector2(100, 42)
 
 [node name="Base" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_c5exn")
 position = Vector2(0, -32)
 texture = ExtResource("4_hixga")
 region_enabled = true
 region_rect = Rect2(128, 0, 64, 128)
 
 [node name="Weapon" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_if4jc")
 position = Vector2(0, -61)
 sprite_frames = SubResource("SpriteFrames_h6nx2")
 animation = &"Attack"
@@ -233,6 +236,11 @@ position = Vector2(0, -56)
 script = ExtResource("8_o0ibc")
 projection = ExtResource("9_ujg82")
 
+[node name="MouseArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
+polygon = PackedVector2Array(-26, -93, 26, -93, 26, -62, 33, -32, 32, 33, -33, 32, -32, -34, -26, -62)
+
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -240,3 +248,5 @@ projection = ExtResource("9_ujg82")
 [connection signal="body_exited" from="Range" to="Range" method="_on_body_exited"]
 [connection signal="frame_changed" from="Weapon" to="." method="_on_weapon_frame_changed"]
 [connection signal="spawn" from="Weapon/ProjectionSpawner" to="Weapon/ProjectionSpawner" method="_on_spawn"]
+[connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
+[connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]

@@ -4,7 +4,7 @@ extends StaticBody2D
 @export var gold_produced: int
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: TextureProgressBar = $HealthBar
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var gold_spawner: Node2D = $GoldSpawner
 

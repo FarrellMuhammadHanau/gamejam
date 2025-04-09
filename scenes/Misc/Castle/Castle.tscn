@@ -2,16 +2,12 @@
 
 [ext_resource type="Script" path="res://scenes/Misc/Castle/castle.gd" id="1_n73x2"]
 [ext_resource type="Texture2D" uid="uid://cp6h3g7vdcnfy" path="res://assets/Tiny Swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_wppr1"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="3_u6xi1"]
+[ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="4_jrqte"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2igv"]
 radius = 48.0
 height = 272.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0mx1"]
-bg_color = Color(0, 0, 0, 0.372549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gmdj"]
-bg_color = Color(0.333333, 0, 0, 1)
 
 [node name="Castle" type="StaticBody2D" groups=["Castle", "Tower"]]
 position = Vector2(0, -64)
@@ -28,17 +24,15 @@ shape = SubResource("CapsuleShape2D_s2igv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wppr1")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -104.0
-offset_top = -104.0
-offset_right = 236.0
-offset_bottom = -77.0
-scale = Vector2(0.6, 0.6)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_x0mx1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3gmdj")
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -139.0
+offset_top = -120.0
+offset_right = 1719.0
+offset_bottom = 12.0
+scale = Vector2(0.15, 0.4)
 value = 100.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
+texture_under = ExtResource("3_u6xi1")
+texture_progress = ExtResource("4_jrqte")
+texture_progress_offset = Vector2(100, 42)
 
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]

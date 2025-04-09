@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_1hk2d"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="2_rwfpj"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 4/spawner4.gd" id="3_0pa8q"]
+
+[resource]
+script = ExtResource("3_0pa8q")
+enemies = [[ExtResource("1_1hk2d"), 0.1], [ExtResource("2_rwfpj"), 10], [ExtResource("2_rwfpj"), 0, 1], [ExtResource("2_rwfpj"), 0, 1], [ExtResource("2_rwfpj"), 15], [ExtResource("2_rwfpj"), 0, 1], [ExtResource("2_rwfpj"), 0, 1], [ExtResource("2_rwfpj"), 15], [ExtResource("2_rwfpj"), 0, 1], [ExtResource("2_rwfpj"), 0, 1]]

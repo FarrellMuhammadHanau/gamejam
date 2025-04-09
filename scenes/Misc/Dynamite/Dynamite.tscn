@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/Misc/Dynamite/area_2d.gd" id="2_u00ms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xa4mo"]
-radius = 70.0
+radius = 80.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5rct"]
 radius = 7.0
@@ -187,7 +187,6 @@ damage = 300
 knockback = 60
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("2_u00ms")

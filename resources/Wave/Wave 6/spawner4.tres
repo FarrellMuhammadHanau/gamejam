@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_8s2ut"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_5yqnx"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_ch22h"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner4.gd" id="4_0g2tu"]
+
+[resource]
+script = ExtResource("4_0g2tu")
+enemies = [[ExtResource("1_8s2ut"), 0.1], [ExtResource("2_5yqnx"), 25], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("1_8s2ut"), 0.1], [ExtResource("3_ch22h"), 15], [ExtResource("3_ch22h"), 0, 1], [ExtResource("3_ch22h"), 0, 1], [ExtResource("1_8s2ut"), 0.1], [ExtResource("2_5yqnx"), 15], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("1_8s2ut"), 0.1], [ExtResource("3_ch22h"), 15], [ExtResource("3_ch22h"), 0, 1], [ExtResource("3_ch22h"), 0, 1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1], [ExtResource("2_5yqnx"), 0.1]]

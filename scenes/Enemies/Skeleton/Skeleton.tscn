@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c1jb2shd8h4rv" path="res://assets/Enemies/Skeleton/PNG/Skeleton1/Death/Skeleton1_Death_full.png" id="4_25mc0"]
 [ext_resource type="Texture2D" uid="uid://b4wutf2f5ifer" path="res://assets/Enemies/Skeleton/PNG/Skeleton1/Run/Skeleton1_Run_full.png" id="4_olqu3"]
 [ext_resource type="Script" path="res://scenes/Enemies/Skeleton/attack_area.gd" id="5_kk6cm"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="7_eo1wo"]
+[ext_resource type="Texture2D" uid="uid://bmmarwy47fmov" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Red.png" id="8_1krqx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou1f7"]
 radius = 6.5
@@ -553,12 +555,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edynk"]
-bg_color = Color(0, 0, 0, 0.372549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwb5n"]
-bg_color = Color(0.333333, 0, 0, 1)
-
 [node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_3tk37")
@@ -591,19 +587,17 @@ avoidance_enabled = true
 radius = 20.0
 max_neighbors = 15
 avoidance_priority = 0.5
-debug_enabled = true
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -11.0
-offset_top = -23.0
-offset_right = 256.0
-offset_bottom = 4.0
-scale = Vector2(0.08, 0.08)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_edynk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rwb5n")
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -14.0
+offset_top = -29.5
+offset_right = 1844.0
+offset_bottom = 102.5
+scale = Vector2(0.015, 0.07)
 value = 100.0
-show_percentage = false
+texture_under = ExtResource("7_eo1wo")
+texture_progress = ExtResource("8_1krqx")
+texture_progress_offset = Vector2(100, 42)
 
 [connection signal="add_tower" from="." to="." method="_on_add_tower"]
 [connection signal="reached" from="." to="." method="_on_reached"]

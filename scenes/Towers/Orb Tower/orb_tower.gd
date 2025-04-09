@@ -4,7 +4,9 @@ extends StaticBody2D
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var spawner = $ProjectionSpawner
-@onready var health_bar = $HealthBar
+@onready var health_bar : TextureProgressBar = $HealthBar
+@onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
+@onready var range_indicator : Panel = $RangeIndicator
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
@@ -18,8 +20,12 @@ var targets = []
 var target
 
 func _ready() -> void:
+	base.material = base.material.duplicate()
+	weapon.material = weapon.material.duplicate()
+	
 	health_bar.max_value = health
 	health_bar.value = health
+	
 	weapon.play(idle_animation)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
@@ -71,4 +77,21 @@ func _on_take_damage(damage: int) -> void:
 		health_bar.value = health
 	else:
 		health_bar.value = 0
+		var tile_pos = misc_layer.local_to_map(global_position)
+		misc_layer.erase_cell(tile_pos)
 		queue_free()
+
+
+func _on_mouse_area_mouse_entered() -> void:
+	var mat = base.material as CanvasItemMaterial
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA
+	mat = weapon.material as CanvasItemMaterial
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA
+	range_indicator.visible = true
+
+func _on_mouse_area_mouse_exited() -> void:
+	var mat = base.material as CanvasItemMaterial
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+	mat = weapon.material as CanvasItemMaterial
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+	range_indicator.visible = false

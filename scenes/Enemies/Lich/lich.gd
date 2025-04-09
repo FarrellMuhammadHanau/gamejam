@@ -13,7 +13,7 @@ enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 
 @onready var animSprite = $AnimatedSprite2D
 @onready var pathFinder : NavigationAgent2D = $NavigationAgent2D
-@onready var health_bar = $HealthBar
+@onready var health_bar : TextureProgressBar = $HealthBar
 @onready var collision = $CollisionShape2D
 @onready var spawner = $"Fire Spawner"
 
@@ -140,6 +140,7 @@ func _on_take_damage(damage: int) -> void:
 				gold_instance.global_position = global_position
 			
 			await animSprite.animation_finished
+			get_tree().current_scene.emit_signal("remove_enemy")
 			call_deferred("queue_free")
 		
 func attack() -> void:

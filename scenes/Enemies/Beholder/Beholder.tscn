@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cmcngter4gev0" path="res://assets/Enemies/Beholder/PNG/Beholder1/Death/Beholder1_Death_full.png" id="2_5movr"]
 [ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="2_5vhqi"]
 [ext_resource type="Texture2D" uid="uid://dyxanbxopt0tg" path="res://assets/Enemies/Beholder/PNG/Beholder1/Run/Beholder1_Run_full.png" id="3_odsos"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="7_68wls"]
+[ext_resource type="Texture2D" uid="uid://bmmarwy47fmov" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Red.png" id="8_kop64"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yn1s"]
 radius = 13.0
@@ -670,12 +672,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nlx7"]
-bg_color = Color(0, 0, 0, 0.372549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxr1q"]
-bg_color = Color(0.333333, 0, 0, 1)
-
 [node name="Beholder" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
@@ -701,6 +697,17 @@ script = ExtResource("1_k2mbd")
 position = Vector2(0, 10.5)
 shape = SubResource("CircleShape2D_s457l")
 
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -19.3333
+offset_top = -46.0
+offset_right = 1838.66
+offset_bottom = 85.9996
+scale = Vector2(0.021, 0.07)
+value = 100.0
+texture_under = ExtResource("7_68wls")
+texture_progress = ExtResource("8_kop64")
+texture_progress_offset = Vector2(100, 42)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_jwwe1")
@@ -715,19 +722,6 @@ radius = 20.0
 max_neighbors = 15
 avoidance_layers = 2
 avoidance_mask = 2
-debug_enabled = true
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -19.3333
-offset_top = -35.6667
-offset_right = 363.667
-offset_bottom = -8.66667
-scale = Vector2(0.1, 0.1)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_0nlx7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bxr1q")
-value = 100.0
-show_percentage = false
 
 [connection signal="add_tower" from="." to="." method="_on_add_tower"]
 [connection signal="reached" from="." to="." method="_on_reached"]

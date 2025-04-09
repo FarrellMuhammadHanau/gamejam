@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bd4u021cbffmq" path="res://assets/Enemies/Lich/PNG/Lich1/Walk/Lich1_Walk_full.png" id="5_a4ctr"]
 [ext_resource type="Script" path="res://scenes/Enemies/Lich/fire_spawner.gd" id="7_t3lml"]
 [ext_resource type="PackedScene" uid="uid://c26go0xna4sqv" path="res://scenes/Enemies/Lich/Lich Fire.tscn" id="8_8juhd"]
+[ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="9_ao6a4"]
+[ext_resource type="Texture2D" uid="uid://bmmarwy47fmov" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Red.png" id="10_apdg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvghv"]
 radius = 10.6
@@ -576,19 +578,13 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8brtq"]
-bg_color = Color(0, 0, 0, 0.372549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw24j"]
-bg_color = Color(0.333333, 0, 0, 1)
-
 [node name="Lich" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_m1rn4")
 health = 300
 speed = 40
 damage = 80
-gold_spawn_rate = 7
+gold_spawn_rate = 5
 gold = ExtResource("2_ll6xv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -619,22 +615,21 @@ radius = 20.0
 max_neighbors = 15
 avoidance_priority = 0.7
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -11.0
-offset_top = -18.0
-offset_right = 256.0
-offset_bottom = 9.0
-scale = Vector2(0.08, 0.08)
-theme_override_constants/outline_size = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_8brtq")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lw24j")
-value = 100.0
-show_percentage = false
-
 [node name="Fire Spawner" type="Node2D" parent="."]
 position = Vector2(9.444, 19.444)
 script = ExtResource("7_t3lml")
 projection = ExtResource("8_8juhd")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -17.7778
+offset_top = -30.5556
+offset_right = 1840.22
+offset_bottom = 101.444
+scale = Vector2(0.019, 0.07)
+value = 100.0
+texture_under = ExtResource("9_ao6a4")
+texture_progress = ExtResource("10_apdg3")
+texture_progress_offset = Vector2(100, 42)
 
 [connection signal="add_tower" from="." to="." method="_on_add_tower"]
 [connection signal="reached" from="." to="." method="_on_reached"]
