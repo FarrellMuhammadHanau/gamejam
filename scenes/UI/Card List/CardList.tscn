@@ -79,7 +79,7 @@ texture_disabled = ExtResource("5_hqnx5")
 stretch_mode = 0
 script = ExtResource("6_e17g5")
 draggable = ExtResource("7_kb4oh")
-price = 7
+price = 10
 required_wave = 1
 
 [node name="Info" parent="HBoxContainer/Orb Tower" instance=ExtResource("8_yjids")]
@@ -94,7 +94,7 @@ offset_left = -0.010025
 offset_top = 0.0100098
 offset_right = 0.0199585
 offset_bottom = 1.0
-required_gold = 7
+required_gold = 10
 required_wave = 1
 title = "Orb Tower"
 
@@ -173,7 +173,7 @@ script = ExtResource("6_e17g5")
 draggable = ExtResource("19_6vwk5")
 collection_id = 3
 price = 12
-required_wave = 5
+required_wave = 4
 
 [node name="Info" parent="HBoxContainer/Tesla Tower" instance=ExtResource("8_yjids")]
 visible = false
@@ -188,7 +188,7 @@ offset_top = 0.0100098
 offset_right = 0.0199738
 offset_bottom = 1.0
 required_gold = 12
-required_wave = 5
+required_wave = 4
 title = "Tesla Tower"
 
 [node name="Dynamite" type="TextureButton" parent="HBoxContainer"]

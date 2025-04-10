@@ -561,7 +561,7 @@ script = ExtResource("1_3tk37")
 current_direction = 1
 health = 100
 speed = 60
-gold_spawn_rate = 10
+gold_spawn_rate = 5
 gold = ExtResource("2_3bmhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -584,7 +584,7 @@ animation = &"Down Attack"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 20.0
+radius = 13.0
 max_neighbors = 15
 avoidance_priority = 0.5
 

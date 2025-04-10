@@ -1,8 +1,8 @@
 [gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="1_bpuon"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner5.gd" id="2_n7w3q"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="1_2ets8"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner5.gd" id="2_uewsd"]
 
 [resource]
-script = ExtResource("2_n7w3q")
-enemies = [[ExtResource("1_bpuon"), 25], [ExtResource("1_bpuon"), 5], [ExtResource("1_bpuon"), 5], [ExtResource("1_bpuon"), 5], [ExtResource("1_bpuon"), 5], [ExtResource("1_bpuon"), 5], [ExtResource("1_bpuon"), 2], [ExtResource("1_bpuon"), 2], [ExtResource("1_bpuon"), 2], [ExtResource("1_bpuon"), 2], [ExtResource("1_bpuon"), 2], [ExtResource("1_bpuon"), 0.1], [ExtResource("1_bpuon"), 0.1], [ExtResource("1_bpuon"), 0.1]]
+script = ExtResource("2_uewsd")
+enemies = [[ExtResource("1_2ets8"), 25], [ExtResource("1_2ets8"), 5], [ExtResource("1_2ets8"), 5], [ExtResource("1_2ets8"), 5], [ExtResource("1_2ets8"), 5], [ExtResource("1_2ets8"), 5], [ExtResource("1_2ets8"), 2], [ExtResource("1_2ets8"), 2], [ExtResource("1_2ets8"), 2], [ExtResource("1_2ets8"), 2], [ExtResource("1_2ets8"), 2], [ExtResource("1_2ets8"), 0.1], [ExtResource("1_2ets8"), 0.1], [ExtResource("1_2ets8"), 0.1]]

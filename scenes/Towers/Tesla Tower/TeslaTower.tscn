@@ -224,7 +224,7 @@ animations = [{
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_6omw1")
-health = 2000
+health = 1800
 damage = 60
 
 [node name="Range" type="Area2D" parent="."]

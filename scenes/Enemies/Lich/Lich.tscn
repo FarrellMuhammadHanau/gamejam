@@ -584,7 +584,7 @@ script = ExtResource("1_m1rn4")
 health = 300
 speed = 40
 damage = 80
-gold_spawn_rate = 5
+gold_spawn_rate = 3
 gold = ExtResource("2_ll6xv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

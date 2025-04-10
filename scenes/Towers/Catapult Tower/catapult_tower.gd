@@ -20,10 +20,11 @@ var targets = []
 var target
 
 func _ready() -> void:
+	await get_tree().process_frame
+	
 	base.material = base.material.duplicate()
 	weapon.material = weapon.material.duplicate()
 	
-	await get_tree().process_frame
 	health_bar.max_value = health
 	health_bar.value = health
 	weapon.play(idle_animation)

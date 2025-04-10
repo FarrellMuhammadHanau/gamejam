@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=4 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_mijih"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_d8sup"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 3/spawner4.gd" id="3_2chf2"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_fj48c"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_ndmxg"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 3/spawner4.gd" id="3_efrux"]
 
 [resource]
-script = ExtResource("3_2chf2")
-enemies = [[ExtResource("1_mijih"), 0.1], [ExtResource("2_d8sup"), 30], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1], [ExtResource("2_d8sup"), 0.1]]
+script = ExtResource("3_efrux")
+enemies = [[ExtResource("1_fj48c"), 0.1], [ExtResource("2_ndmxg"), 30], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1], [ExtResource("2_ndmxg"), 0.1]]

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=4 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_qwmrp"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="2_0lcid"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 3/spawner2.gd" id="3_521io"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_nsuux"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="2_pn5ig"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 3/spawner2.gd" id="3_5ci78"]
 
 [resource]
-script = ExtResource("3_521io")
-enemies = [[ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 5], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 5], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 5], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 5], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("2_0lcid"), 5], [ExtResource("1_qwmrp"), 10], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1], [ExtResource("1_qwmrp"), 0.1]]
+script = ExtResource("3_5ci78")
+enemies = [[ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 5], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 5], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 5], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 5], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("2_pn5ig"), 5], [ExtResource("1_nsuux"), 10], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1], [ExtResource("1_nsuux"), 0.1]]

@@ -20,6 +20,7 @@ var targets = []
 var target
 
 func _ready() -> void:
+	await get_tree().process_frame
 	base.material = base.material.duplicate()
 	weapon.material = weapon.material.duplicate()
 	

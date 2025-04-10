@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_awlbe"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="2_egfd4"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_ql8k7"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner2.gd" id="4_rh06d"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_qscm6"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="2_0w7ft"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_sa5jl"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner2.gd" id="4_kki8x"]
 
 [resource]
-script = ExtResource("4_rh06d")
-enemies = [[ExtResource("1_awlbe"), 5], [ExtResource("1_awlbe"), 5], [ExtResource("1_awlbe"), 5], [ExtResource("1_awlbe"), 5], [ExtResource("1_awlbe"), 5], [ExtResource("2_egfd4"), 0.1], [ExtResource("3_ql8k7"), 15], [ExtResource("3_ql8k7"), 0, 1], [ExtResource("3_ql8k7"), 0, 1], [ExtResource("2_egfd4"), 0.1], [ExtResource("1_awlbe"), 15], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("2_egfd4"), 0.1], [ExtResource("3_ql8k7"), 15], [ExtResource("3_ql8k7"), 0, 1], [ExtResource("3_ql8k7"), 0, 1], [ExtResource("2_egfd4"), 0.1], [ExtResource("1_awlbe"), 15], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("1_awlbe"), 0.1], [ExtResource("3_ql8k7"), 0.1], [ExtResource("3_ql8k7"), 0, 1], [ExtResource("3_ql8k7"), 0, 1]]
+script = ExtResource("4_kki8x")
+enemies = [[ExtResource("1_qscm6"), 5], [ExtResource("1_qscm6"), 5], [ExtResource("1_qscm6"), 5], [ExtResource("1_qscm6"), 5], [ExtResource("1_qscm6"), 5], [ExtResource("2_0w7ft"), 0.1], [ExtResource("3_sa5jl"), 15], [ExtResource("3_sa5jl"), 0, 1], [ExtResource("3_sa5jl"), 0, 1], [ExtResource("2_0w7ft"), 0.1], [ExtResource("1_qscm6"), 15], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("2_0w7ft"), 0.1], [ExtResource("3_sa5jl"), 15], [ExtResource("3_sa5jl"), 0, 1], [ExtResource("3_sa5jl"), 0, 1], [ExtResource("2_0w7ft"), 0.1], [ExtResource("1_qscm6"), 15], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("1_qscm6"), 0.1], [ExtResource("3_sa5jl"), 0.1], [ExtResource("3_sa5jl"), 0, 1], [ExtResource("3_sa5jl"), 0, 1]]

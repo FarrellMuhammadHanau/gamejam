@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_j28ug"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_0myec"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_mfgha"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner3.gd" id="4_hm2mo"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_otjpw"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_0hvr2"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_6xuev"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 6/spawner3.gd" id="4_q7yd1"]
 
 [resource]
-script = ExtResource("4_hm2mo")
-enemies = [[ExtResource("1_j28ug"), 0.1], [ExtResource("2_0myec"), 25], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("1_j28ug"), 0.1], [ExtResource("3_mfgha"), 15], [ExtResource("3_mfgha"), 0, 1], [ExtResource("3_mfgha"), 0, 1], [ExtResource("1_j28ug"), 0.1], [ExtResource("2_0myec"), 15], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("1_j28ug"), 0.1], [ExtResource("3_mfgha"), 15], [ExtResource("3_mfgha"), 0, 1], [ExtResource("3_mfgha"), 0, 1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1], [ExtResource("2_0myec"), 0.1]]
+script = ExtResource("4_q7yd1")
+enemies = [[ExtResource("1_otjpw"), 0.1], [ExtResource("2_0hvr2"), 25], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("1_otjpw"), 0.1], [ExtResource("3_6xuev"), 15], [ExtResource("3_6xuev"), 0, 1], [ExtResource("3_6xuev"), 0, 1], [ExtResource("1_otjpw"), 0.1], [ExtResource("2_0hvr2"), 15], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("1_otjpw"), 0.1], [ExtResource("3_6xuev"), 15], [ExtResource("3_6xuev"), 0, 1], [ExtResource("3_6xuev"), 0, 1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1], [ExtResource("2_0hvr2"), 0.1]]

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_agxhr"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_uha1u"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_36kbo"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 5/spawner4.gd" id="4_x613c"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_uvfni"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="2_oeodm"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_oj84s"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 5/spawner4.gd" id="4_s5ehp"]
 
 [resource]
-script = ExtResource("4_x613c")
-enemies = [[ExtResource("1_agxhr"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("3_36kbo"), 15], [ExtResource("3_36kbo"), 0, 1], [ExtResource("2_uha1u"), 10], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("2_uha1u"), 0.1], [ExtResource("3_36kbo"), 15], [ExtResource("3_36kbo"), 0, 1], [ExtResource("3_36kbo"), 0, 1]]
+script = ExtResource("4_s5ehp")
+enemies = [[ExtResource("1_uvfni"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("3_oj84s"), 15], [ExtResource("3_oj84s"), 0, 1], [ExtResource("2_oeodm"), 10], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("2_oeodm"), 0.1], [ExtResource("3_oj84s"), 15], [ExtResource("3_oj84s"), 0, 1], [ExtResource("3_oj84s"), 0, 1]]

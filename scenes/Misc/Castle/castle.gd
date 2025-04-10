@@ -5,6 +5,7 @@ extends StaticBody2D
 signal take_damage(damage: int)
 
 func _ready() -> void:
+	await get_tree().process_frame
 	health_bar.max_value = health
 	health_bar.value = health
 

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_0o1ju"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="2_pe8vt"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_1mirc"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 5/spawner1.gd" id="4_edbsc"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Golem/Golem.tscn" id="1_7gsr0"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Beholder/Beholder.tscn" id="2_mljnn"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Lich/Lich.tscn" id="3_lt53t"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 5/spawner1.gd" id="4_3do3u"]
 
 [resource]
-script = ExtResource("4_edbsc")
-enemies = [[ExtResource("1_0o1ju"), 0.1], [ExtResource("2_pe8vt"), 10], [ExtResource("2_pe8vt"), 0, 1], [ExtResource("2_pe8vt"), 0, 1], [ExtResource("1_0o1ju"), 15], [ExtResource("2_pe8vt"), 10], [ExtResource("2_pe8vt"), 0, 1], [ExtResource("2_pe8vt"), 0, 1], [ExtResource("3_1mirc"), 15], [ExtResource("3_1mirc"), 0, 1], [ExtResource("3_1mirc"), 0, 1]]
+script = ExtResource("4_3do3u")
+enemies = [[ExtResource("1_7gsr0"), 0.1], [ExtResource("2_mljnn"), 10], [ExtResource("2_mljnn"), 0, 1], [ExtResource("2_mljnn"), 0, 1], [ExtResource("1_7gsr0"), 15], [ExtResource("2_mljnn"), 10], [ExtResource("2_mljnn"), 0, 1], [ExtResource("2_mljnn"), 0, 1], [ExtResource("3_lt53t"), 15], [ExtResource("3_lt53t"), 0, 1], [ExtResource("3_lt53t"), 0, 1]]

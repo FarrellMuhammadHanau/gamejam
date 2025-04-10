@@ -37,9 +37,10 @@ func load_data():
 	wave_bar.max_value = 0
 	for i in range(6):
 		var file_path = "res://resources/Wave/Wave %d/spawner%d.tres" % [Global.wave, i + 1]
-		if not FileAccess.file_exists(file_path):
+		if not ResourceLoader.exists(file_path):
 			continue
-		var enemies = load(file_path).enemies
+			
+		var enemies = ResourceLoader.load(file_path).enemies
 		enemies_amount += len(enemies)
 		spawners[i].load_enemies(enemies)
 		spawners[i].spawn_enemies()
@@ -59,3 +60,11 @@ func save_script():
 func _on_remove_enemy() -> void:
 	enemies_amount -= 1
 	wave_bar.value = enemies_amount
+
+func _exit_tree():
+	for child in $WorldLayer/ElevationLayer.get_children():
+		if child is StaticBody2D:
+			# Clear semua signal terlebih dahulu
+			for signal_connection in child.get_signal_connection_list("tree_entered"):
+				if child.is_connected(signal_connection["signal"], signal_connection["callable"]):
+					child.disconnect(signal_connection["signal"], signal_connection["callable"])

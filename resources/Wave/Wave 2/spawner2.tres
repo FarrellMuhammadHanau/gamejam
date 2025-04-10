@@ -1,8 +1,8 @@
 [gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_ae1m5"]
-[ext_resource type="Script" path="res://scripts/Wave/Wave 2/spawner2.gd" id="2_arvbv"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/Skeleton/Skeleton.tscn" id="1_1nwki"]
+[ext_resource type="Script" path="res://scripts/Wave/Wave 2/spawner2.gd" id="2_d8y4u"]
 
 [resource]
-script = ExtResource("2_arvbv")
-enemies = [[ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 5], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 15], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 0.1], [ExtResource("1_ae1m5"), 0.1]]
+script = ExtResource("2_d8y4u")
+enemies = [[ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 5], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 15], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 0.1], [ExtResource("1_1nwki"), 0.1]]

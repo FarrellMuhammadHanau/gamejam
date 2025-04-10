@@ -11,6 +11,7 @@ signal add_target(target: Node2D)
 signal remove_target(target: Node2D)
 
 func _ready():
+	await get_tree().process_frame
 	await animation.animation_finished
 	var tile_pos = misc_layer.local_to_map(global_position)
 	misc_layer.erase_cell(tile_pos)

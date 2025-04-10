@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var variance : Vector2
+@onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 var enemies = []
 
 # Format Input: Scene, Time
@@ -14,5 +15,5 @@ func spawn_enemies():
 		await get_tree().create_timer(timer).timeout
 		
 		var enemy_instance = enemy_scene.instantiate()
-		get_tree().get_root().add_child(enemy_instance)
+		misc_layer.add_child(enemy_instance)
 		enemy_instance.global_position = global_position + variance
