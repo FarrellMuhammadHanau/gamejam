@@ -1,12 +1,15 @@
 extends StaticBody2D
 
-@export var health = 500
+@export var health : int
+@export var max_health : int
+
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var spawner = $Weapon/ProjectionSpawner
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var range_indicator : Panel = $RangeIndicator
+@onready var attack_sound : AudioStreamPlayer2D = $AttackSound
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
@@ -24,7 +27,7 @@ func _ready() -> void:
 	base.material = base.material.duplicate()
 	weapon.material = weapon.material.duplicate()
 	
-	health_bar.max_value = health
+	health_bar.max_value = max_health
 	health_bar.value = health
 	weapon.play(idle_animation)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -84,6 +87,7 @@ func _process(delta: float) -> void:
 
 func _on_weapon_frame_changed() -> void:
 	if weapon.frame == attack_frame and is_instance_valid(target):
+		attack_sound.play()
 		spawner.emit_signal("spawn", target)
 
 func _on_take_damage(damage: int) -> void:

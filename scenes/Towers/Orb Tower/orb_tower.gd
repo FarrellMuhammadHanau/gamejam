@@ -1,6 +1,8 @@
 extends StaticBody2D
 
-@export var health = 500
+@export var max_health: int
+@export var health : int
+
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var spawner = $ProjectionSpawner
@@ -23,7 +25,7 @@ func _ready() -> void:
 	base.material = base.material.duplicate()
 	weapon.material = weapon.material.duplicate()
 	
-	health_bar.max_value = health
+	health_bar.max_value = max_health
 	health_bar.value = health
 	
 	weapon.play(idle_animation)

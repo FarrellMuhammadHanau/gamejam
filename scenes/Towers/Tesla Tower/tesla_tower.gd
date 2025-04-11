@@ -1,13 +1,16 @@
 extends StaticBody2D
 
-@export var health = 1200
-@export var damage = 50
+@export var health : int
+@export var max_health: int
+
+@export var damage = 60
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var blast = $Blast
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var range_indicator : Panel = $RangeIndicator
+@onready var blast_sound : AudioStreamPlayer2D = $BlastSound
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
@@ -24,7 +27,7 @@ func _ready() -> void:
 	base.material = base.material.duplicate()
 	weapon.material = weapon.material.duplicate()
 	
-	health_bar.max_value = health
+	health_bar.max_value = max_health
 	health_bar.value = health
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
@@ -38,22 +41,22 @@ func _on_remove_target(body: CharacterBody2D) -> void:
 	targets.erase(body)
 
 func attack() -> void:
-	weapon.play(attack_animation)
 	is_attacking = true
-	
+	weapon.play(attack_animation)
 	await weapon.animation_finished
 	
 	weapon.play(idle_animation)
 	is_attacking = false
 
 func _process(delta: float) -> void:
-	if targets.size() > 0:
+	if targets.size() > 0 and not is_attacking:
 		attack()
 
 func _on_weapon_frame_changed() -> void:
 	if is_attacking and weapon.frame == attack_frame:
 		blast.call_deferred("show")
 		blast.play("Explode")
+		blast_sound.play()
 		for target in targets:
 			target.emit_signal("take_damage", damage)
 		await blast.animation_finished

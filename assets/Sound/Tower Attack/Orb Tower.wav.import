@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://decv3vrawarwu"
+path="res://.godot/imported/Orb Tower.wav-0307cd1d309cd0eb6ff3ff807c049c4d.sample"
+
+[deps]
+
+source_file="res://assets/Sound/Tower Attack/Orb Tower.wav"
+dest_files=["res://.godot/imported/Orb Tower.wav-0307cd1d309cd0eb6ff3ff807c049c4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

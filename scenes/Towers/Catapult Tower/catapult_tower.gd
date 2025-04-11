@@ -1,6 +1,8 @@
 extends StaticBody2D
 
-@export var health = 800
+@export var health : int
+@export var max_health : int
+
 @onready var base = $Base
 @onready var weapon = $Weapon
 @onready var spawner = $Weapon/ProjectionSpawner

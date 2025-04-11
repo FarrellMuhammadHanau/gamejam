@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x5efw235rfaw"
+path="res://.godot/imported/dynamite_fuse.wav-f6d9aaa776a88bce5bb04ad9d8d45255.sample"
+
+[deps]
+
+source_file="res://assets/Sound/Tower Attack/dynamite_fuse.wav"
+dest_files=["res://.godot/imported/dynamite_fuse.wav-f6d9aaa776a88bce5bb04ad9d8d45255.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

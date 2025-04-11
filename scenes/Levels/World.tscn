@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://uvnrymjo5do2"]
+[gd_scene load_steps=45 format=4 uid="uid://uvnrymjo5do2"]
 
 [ext_resource type="Script" path="res://scenes/Levels/world.gd" id="1_jmi4n"]
 [ext_resource type="Texture2D" uid="uid://3p3lne2wswb3" path="res://assets/Tiny Swords/Terrain/Ground/Tilemap_Elevation.png" id="2_d81xk"]
@@ -18,9 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://ch7aa4aair64q" path="res://scenes/Misc/Castle/Castle.tscn" id="21_w14hc"]
 [ext_resource type="PackedScene" uid="uid://dwynmoq1bqfyy" path="res://scenes/UI/Wave Bar/WaveInfo.tscn" id="22_2k16m"]
 [ext_resource type="PackedScene" uid="uid://eaticueknsn7" path="res://scenes/Misc/filler.tscn" id="22_j1ism"]
+[ext_resource type="PackedScene" uid="uid://5863dyryqfyp" path="res://scenes/UI/Pause/PauseMenu.tscn" id="23_1r350"]
+[ext_resource type="PackedScene" uid="uid://8th60q60sucw" path="res://scenes/UI/Pause/PauseButton.tscn" id="23_8fmes"]
 [ext_resource type="PackedScene" uid="uid://cf5sbhv2smc8v" path="res://scenes/Misc/Mine/DestroyedMine.tscn" id="23_vq6rx"]
 [ext_resource type="PackedScene" uid="uid://bo34f6x2ku7ih" path="res://scenes/Misc/Mine/Mine.tscn" id="24_3xu32"]
 [ext_resource type="PackedScene" uid="uid://b64oy73xj8vnu" path="res://scenes/Misc/Tree/Tree.tscn" id="24_heshw"]
+[ext_resource type="AudioStream" uid="uid://d06tvae82wufl" path="res://assets/Sound/Backsound/wave.ogg" id="25_s4pgo"]
 [ext_resource type="PackedScene" uid="uid://dbxjrrk4wdlwb" path="res://scenes/UI/Card List/CardList.tscn" id="26_lwi8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gvgf"]
@@ -550,5 +553,14 @@ script = ExtResource("21_oytat")
 [node name="CardList" parent="CanvasLayer" instance=ExtResource("26_lwi8e")]
 
 [node name="WaveInfo" parent="CanvasLayer" instance=ExtResource("22_2k16m")]
+
+[node name="PauseButton" parent="CanvasLayer" instance=ExtResource("23_8fmes")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("23_1r350")]
+
+[node name="WaveSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(480, 208)
+stream = ExtResource("25_s4pgo")
+volume_db = -15.0
 
 [connection signal="remove_enemy" from="." to="." method="_on_remove_enemy"]

@@ -15,12 +15,15 @@ enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 @onready var pathFinder : NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : TextureProgressBar = $HealthBar
 @onready var collision = $CollisionShape2D
+@onready var walk_sound : AudioStreamPlayer2D = $WalkSound
+@onready var walk_timer : Timer = $WalkTimer
 
 signal take_damage(damage: int)
 signal take_knockback(anchor: Vector2, knockback: int)
 signal reached(target: Node2D)
 signal unreached(target: Node2D)
 signal add_tower(tower: StaticBody2D)
+var is_timer_finished = true
 
 var towers = []
 var closest = null
@@ -34,34 +37,62 @@ func update_direction(dir : DIRECTION) -> void:
 		DIRECTION.RIGHT:
 			if is_death:
 				animSprite.play("Side Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Side Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Side Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = true
 		DIRECTION.LEFT:
 			if is_death:
 				animSprite.play("Side Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Side Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Side Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = false
 		DIRECTION.UP:
 			if is_death:
 				animSprite.play("Up Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Up Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Up Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = false
 		DIRECTION.DOWN:
 			if is_death:
 				animSprite.play("Down Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Down Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Down Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = true
 
 func _ready() -> void:
@@ -188,3 +219,8 @@ func _on_add_tower(tower: StaticBody2D) -> void:
 		towers.append(tower)
 		if not is_attacking:
 			closest = find_closest()
+
+
+func _on_walk_timer_timeout() -> void:
+	walk_sound.play()
+	is_timer_finished = true

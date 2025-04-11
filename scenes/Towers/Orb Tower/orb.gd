@@ -2,6 +2,7 @@ extends Node2D
 @export var speed = 700
 
 @onready var sprite = $AnimatedSprite2D
+@onready var impact_sound : AudioStreamPlayer2D = $ImpactSound
 var target : Node2D
 var damage = 80
 var is_enter = false
@@ -28,7 +29,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.emit_signal("take_damage", damage)
 		
 		var impact_animation = "Impact"
+		impact_sound.play()
 		sprite.play(impact_animation)
 		await sprite.animation_finished
+		sprite.visible = false
+		await impact_sound.finished
 		
 		queue_free()

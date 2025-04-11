@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://7mw3ugjsouxo"]
+[gd_scene load_steps=82 format=3 uid="uid://7mw3ugjsouxo"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/Skeleton/skeleton.gd" id="1_3tk37"]
 [ext_resource type="PackedScene" uid="uid://cq8imdmlp7woa" path="res://scenes/Misc/Mine/Gold.tscn" id="2_3bmhh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/Enemies/Skeleton/attack_area.gd" id="5_kk6cm"]
 [ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="7_eo1wo"]
 [ext_resource type="Texture2D" uid="uid://bmmarwy47fmov" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Red.png" id="8_1krqx"]
+[ext_resource type="AudioStream" uid="uid://b64eddq1urduh" path="res://assets/Sound/Enemies Walk/skeleton_step.wav" id="9_n28nn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou1f7"]
 radius = 6.5
@@ -580,7 +581,7 @@ shape = SubResource("CircleShape2D_vsp14")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7.5)
 sprite_frames = SubResource("SpriteFrames_khljq")
-animation = &"Down Attack"
+animation = &"Down Walk"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -599,6 +600,13 @@ texture_under = ExtResource("7_eo1wo")
 texture_progress = ExtResource("8_1krqx")
 texture_progress_offset = Vector2(100, 42)
 
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_n28nn")
+volume_db = -30.0
+
+[node name="WalkTimer" type="Timer" parent="."]
+wait_time = 0.4
+
 [connection signal="add_tower" from="." to="." method="_on_add_tower"]
 [connection signal="reached" from="." to="." method="_on_reached"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -608,3 +616,4 @@ texture_progress_offset = Vector2(100, 42)
 [connection signal="body_exited" from="AttackArea" to="AttackArea" method="_on_body_exited"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="WalkTimer" to="." method="_on_walk_timer_timeout"]

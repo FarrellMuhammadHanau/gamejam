@@ -4,6 +4,10 @@ var dragging := false
 var last_mouse_position := Vector2()
 
 func _input(event):
+	if Global.paused:
+		dragging = false
+		return
+		
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:

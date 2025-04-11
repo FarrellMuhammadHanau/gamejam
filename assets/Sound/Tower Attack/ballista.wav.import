@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://be6btbh7w4nte"
+path="res://.godot/imported/ballista.wav-58c337caf5c09cf1abf99364fc8ab954.sample"
+
+[deps]
+
+source_file="res://assets/Sound/Tower Attack/ballista.wav"
+dest_files=["res://.godot/imported/ballista.wav-58c337caf5c09cf1abf99364fc8ab954.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -4,6 +4,8 @@ extends StaticBody2D
 @export var knockback: int
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
+@onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
+@onready var fuse_sound: AudioStreamPlayer2D = $FuseSound
 
 var targets = []
 
@@ -26,7 +28,11 @@ func _on_remove_target(target: Node2D) -> void:
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if animation.frame == 15:
+	if animation.frame == 10:
+		fuse_sound.play()
+	elif animation.frame == 15:
+		fuse_sound.stop()
+		explosion_sound.play()
 		for target in targets:
 			target.emit_signal("take_damage", damage)
 			target.emit_signal("take_knockback", global_position, knockback)

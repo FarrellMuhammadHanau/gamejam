@@ -16,6 +16,8 @@ enum DIRECTION {UP, DOWN, RIGHT, LEFT}
 @onready var health_bar : TextureProgressBar = $HealthBar
 @onready var collision = $CollisionShape2D
 @onready var spawner = $"Fire Spawner"
+@onready var walk_sound : AudioStreamPlayer2D = $WalkSound
+@onready var walk_timer : Timer = $WalkTimer
 
 signal take_damage(damage: int)
 signal take_knockback(anchor: Vector2, knockback: int)
@@ -29,6 +31,7 @@ var reached_towers = []
 var is_attacking = false
 var is_death = false
 var spawner_position = [Vector2(9.444, 19.444), Vector2(-30, -16.111), Vector2(-10.556, -33.333), Vector2(30, -16.111)]
+var is_timer_finished = true
 
 func update_direction(dir : DIRECTION) -> void:
 	current_direction = dir
@@ -36,38 +39,66 @@ func update_direction(dir : DIRECTION) -> void:
 		DIRECTION.RIGHT:
 			if is_death:
 				animSprite.play("Side Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Side Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Side Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = true
 			spawner.position = spawner_position[3]
 		DIRECTION.LEFT:
 			if is_death:
 				animSprite.play("Side Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Side Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Side Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = false
 			spawner.position = spawner_position[1]
 		DIRECTION.UP:
 			if is_death:
 				animSprite.play("Up Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Up Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Up Walk")
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
 			animSprite.flip_h = false
 			spawner.position = spawner_position[2]
 		DIRECTION.DOWN:
 			if is_death:
 				animSprite.play("Down Death")
+				walk_timer.stop()
+				is_timer_finished = true
 			elif reached_towers.size() > 0:
 				animSprite.play("Down Attack")
+				walk_timer.stop()
+				is_timer_finished = true
 			else:
 				animSprite.play("Down Walk")
-			animSprite.flip_h = false
+				if is_timer_finished:
+					walk_timer.start()
+					is_timer_finished = false
+			animSprite.flip_h = true
 			spawner.position = spawner_position[0]
 
 func _ready() -> void:
@@ -83,7 +114,7 @@ func _process(delta: float) -> void:
 	if is_death:
 		pathFinder.set_velocity(Vector2.ZERO)
 		return
-		
+	
 	if is_attacking:
 		pathFinder.set_velocity(Vector2.ZERO)
 		return
@@ -97,9 +128,12 @@ func _process(delta: float) -> void:
 		if not closest:
 			pathFinder.set_velocity(Vector2.ZERO)
 			return
-		
+	
 	
 	pathFinder.target_position = closest.global_position
+	if pathFinder.is_navigation_finished():
+		return
+
 	var target_dir = pathFinder.get_next_path_position() - global_position
 	target_dir = target_dir.normalized()
 	
@@ -193,3 +227,8 @@ func _on_add_tower(tower: StaticBody2D) -> void:
 		towers.append(tower)
 		if not is_attacking:
 			closest = find_closest()
+
+
+func _on_walk_timer_timeout() -> void:
+	walk_sound.play()
+	is_timer_finished = true

@@ -609,6 +609,8 @@ sprite_frames = SubResource("SpriteFrames_778g3")
 animation = &"Down Walk"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
 avoidance_enabled = true
 radius = 20.0
 max_neighbors = 15
@@ -632,7 +634,7 @@ texture_progress_offset = Vector2(100, 42)
 
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_jtupb")
-volume_db = -30.0
+volume_db = -25.0
 
 [node name="WalkTimer" type="Timer" parent="."]
 wait_time = 0.4

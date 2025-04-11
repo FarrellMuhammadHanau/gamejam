@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cv7j0ktgxsopp"]
+[gd_scene load_steps=22 format=3 uid="uid://cv7j0ktgxsopp"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/ballista.gd" id="1_628jk"]
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/range.gd" id="2_bndwu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/projection_spawner.gd" id="7_pbiin"]
 [ext_resource type="PackedScene" uid="uid://7pcmthq5y188" path="res://scenes/Towers/Ballista/Arrow.tscn" id="8_h8cbe"]
 [ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="8_n1pip"]
+[ext_resource type="AudioStream" uid="uid://be6btbh7w4nte" path="res://assets/Sound/Tower Attack/ballista.wav" id="9_ywkon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bvcj"]
 radius = 600.0
@@ -87,6 +88,7 @@ animations = [{
 [node name="Ballista" type="StaticBody2D" groups=["Tower"]]
 script = ExtResource("1_628jk")
 health = 1600
+max_health = 1600
 
 [node name="Range" type="Area2D" parent="."]
 collision_layer = 0
@@ -144,6 +146,10 @@ projection = ExtResource("8_h8cbe")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
 polygon = PackedVector2Array(-26, -89, 26, -89, 26, -61, 32, -29, 32, 32, -32, 32, -32, -32, -26, -61)
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ywkon")
+volume_db = -15.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://beh3q2586lv10"]
+[gd_scene load_steps=40 format=3 uid="uid://beh3q2586lv10"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/tesla_tower.gd" id="1_6omw1"]
 [ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/range.gd" id="2_wv61q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://t61dylp8i8o6" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Weapon.png" id="4_134pv"]
 [ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="4_ld0d7"]
 [ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="5_x8tyb"]
+[ext_resource type="AudioStream" uid="uid://ci66xkh07gx5s" path="res://assets/Sound/Tower Attack/tesla tower.wav" id="8_vu5ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_la7mk"]
 radius = 100.0
@@ -225,7 +226,7 @@ collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_6omw1")
 health = 1800
-damage = 60
+max_health = 1800
 
 [node name="Range" type="Area2D" parent="."]
 collision_layer = 0
@@ -284,6 +285,10 @@ animation = &"Explode"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
 polygon = PackedVector2Array(0, -99, -9, -90, -9, -84, -25, -84, -26, -61, -32, -34, -32, 32, 32, 32, 33, -35, 27, -62, 26, -84, 10, -84, 9, -91)
+
+[node name="BlastSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vu5ac")
+volume_db = -25.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

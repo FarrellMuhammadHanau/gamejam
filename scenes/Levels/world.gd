@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var wave_bar : TextureProgressBar = $CanvasLayer/WaveInfo/WaveBar
+@onready var misc_layer : TileMapLayer = $WorldLayer/MiscLayer
+@onready var menu : Control = $CanvasLayer/PauseMenu
+@onready var wave_sound : AudioStreamPlayer2D = $WaveSound
 
 var spawners: Array
 var is_wave_begining = true
@@ -9,8 +12,13 @@ var enemies_amount : int
 signal remove_enemy()
 
 func _ready() -> void:
-	Engine.time_scale = 1
-	Engine.max_fps = 120
+	if Global.is_reload:
+		menu.visible = false
+		Engine.time_scale = 1
+		Global.paused = false
+	else:
+		Engine.time_scale = 0
+		Engine.max_fps = 120
 
 	spawners = [
 		$EnemiesSpawners/Spawner1, 
@@ -20,17 +28,20 @@ func _ready() -> void:
 		$EnemiesSpawners/Spawner5, 
 		$EnemiesSpawners/Spawner6
 	]
-	#save_script()
 	
 func _process(delta: float) -> void:
 	if is_wave_begining:
 		is_wave_begining = false
+		if Global.wave != 1:
+			wave_sound.play()
 		load_data()
 	elif enemies_amount == 0:
 		Global.wave += 1
 		Global.max_gold += 5
 		if Global.wave > Global.max_wave:
-			get_tree().quit()
+			Global.reset()
+			Global.is_win = true
+			get_tree().reload_current_scene()
 		is_wave_begining = true
 		
 func load_data():
@@ -55,7 +66,6 @@ func save_script():
 				continue
 			var resource = load(file_path).new()
 			ResourceSaver.save(resource, "res://resources/Wave/Wave %d/spawner%d.tres" % [i + 1, j + 1])
-
 
 func _on_remove_enemy() -> void:
 	enemies_amount -= 1

@@ -1,0 +1,153 @@
+[gd_scene load_steps=11 format=3 uid="uid://5863dyryqfyp"]
+
+[ext_resource type="Texture2D" uid="uid://dnvw7hqgm4knr" path="res://assets/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_2xps6"]
+[ext_resource type="Script" path="res://scenes/UI/Pause/pause_menu.gd" id="1_7muju"]
+[ext_resource type="Texture2D" uid="uid://f5kn26rxuhv0" path="res://assets/Tiny Swords/UI/Banners/Carved_3Slides.png" id="2_hgsvr"]
+[ext_resource type="Texture2D" uid="uid://5yecfwaq8vqv" path="res://assets/Tiny Swords/UI/Banners/Carved_9Slides.png" id="3_ym57d"]
+[ext_resource type="Texture2D" uid="uid://c1rqw3tqocj7r" path="res://assets/Tiny Swords/UI/Buttons/Button_Blue_3Slides.png" id="4_2xqqx"]
+[ext_resource type="Texture2D" uid="uid://bjgpup2au1dtf" path="res://assets/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="5_ujocw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0a31b"]
+font_size = 28
+font_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vitxs"]
+font_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhd38"]
+font_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_65701"]
+font_color = Color(0, 0, 0, 0.509804)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7muju")
+
+[node name="BackgroundMask" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.54902)
+
+[node name="Banner" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 80.0
+offset_right = 816.0
+offset_bottom = 552.0
+texture = ExtResource("1_2xps6")
+region_rect = Rect2(-1, 3, 193, 189)
+patch_margin_left = 57
+patch_margin_top = 65
+patch_margin_right = 59
+patch_margin_bottom = 49
+
+[node name="TitleCarve" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 144.0
+offset_right = 752.0
+offset_bottom = 216.0
+texture = ExtResource("2_hgsvr")
+
+[node name="Title" type="Label" parent="TitleCarve"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 19.0
+offset_right = 273.0
+offset_bottom = 58.0
+text = "Bastion Below"
+label_settings = SubResource("LabelSettings_0a31b")
+
+[node name="Win" type="Label" parent="TitleCarve"]
+visible = false
+offset_left = 117.0
+offset_top = 20.0
+offset_right = 228.0
+offset_bottom = 59.0
+text = "You Win"
+label_settings = SubResource("LabelSettings_0a31b")
+
+[node name="Lose" type="Label" parent="TitleCarve"]
+visible = false
+offset_left = 117.0
+offset_top = 20.0
+offset_right = 230.0
+offset_bottom = 59.0
+text = "You lose"
+label_settings = SubResource("LabelSettings_0a31b")
+
+[node name="MainCarve" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 224.0
+offset_right = 752.0
+offset_bottom = 480.0
+texture = ExtResource("3_ym57d")
+
+[node name="PlayButton" type="TextureButton" parent="MainCarve"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 23.0
+offset_right = 322.0
+offset_bottom = 87.0
+texture_normal = ExtResource("4_2xqqx")
+texture_pressed = ExtResource("5_ujocw")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MainCarve/PlayButton"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 12.0
+offset_right = 163.0
+offset_bottom = 35.0
+text = "Play"
+label_settings = SubResource("LabelSettings_vitxs")
+
+[node name="RestartButton" type="TextureButton" parent="MainCarve"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 95.0
+offset_right = 322.0
+offset_bottom = 159.0
+texture_normal = ExtResource("4_2xqqx")
+texture_pressed = ExtResource("5_ujocw")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MainCarve/RestartButton"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 12.0
+offset_right = 178.0
+offset_bottom = 35.0
+text = "Restart"
+label_settings = SubResource("LabelSettings_xhd38")
+
+[node name="QuitButton" type="TextureButton" parent="MainCarve"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 167.0
+offset_right = 322.0
+offset_bottom = 231.0
+texture_normal = ExtResource("4_2xqqx")
+texture_pressed = ExtResource("5_ujocw")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MainCarve/QuitButton"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 13.0
+offset_right = 163.0
+offset_bottom = 36.0
+text = "Quit"
+label_settings = SubResource("LabelSettings_65701")
+
+[connection signal="pressed" from="MainCarve/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainCarve/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MainCarve/QuitButton" to="." method="_on_quit_button_pressed"]

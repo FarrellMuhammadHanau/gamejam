@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3bhkfiitbdbc"]
+[gd_scene load_steps=33 format=3 uid="uid://d3bhkfiitbdbc"]
 
 [ext_resource type="Texture2D" uid="uid://duwdd3ihoe865" path="res://assets/Tiny Swords/Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png" id="1_c7fq1"]
 [ext_resource type="Script" path="res://scenes/Misc/Dynamite/dynamite.gd" id="1_dbo3p"]
 [ext_resource type="Texture2D" uid="uid://2fvmfcw30eeg" path="res://assets/Tiny Swords/Effects/Explosion/Explosions.png" id="2_n661f"]
 [ext_resource type="Script" path="res://scenes/Misc/Dynamite/area_2d.gd" id="2_u00ms"]
+[ext_resource type="AudioStream" uid="uid://x5efw235rfaw" path="res://assets/Sound/Tower Attack/dynamite_fuse.wav" id="5_a7rwb"]
+[ext_resource type="AudioStream" uid="uid://d3csj472xcl8w" path="res://assets/Sound/Tower Attack/dynamite explosion.wav" id="6_upwpg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xa4mo"]
 radius = 80.0
@@ -203,6 +205,14 @@ shape = SubResource("CapsuleShape2D_u5rct")
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_7ehhe")
 autoplay = "default"
+
+[node name="FuseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_a7rwb")
+volume_db = -15.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_upwpg")
+volume_db = -15.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

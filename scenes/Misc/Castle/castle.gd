@@ -15,4 +15,6 @@ func _on_take_damage(damage: int) -> void:
 		health_bar.value = health
 	else:
 		health_bar.value = 0
-		get_tree().quit()
+		Global.reset()
+		Global.is_lose = true
+		get_tree().reload_current_scene()

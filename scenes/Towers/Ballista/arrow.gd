@@ -1,5 +1,5 @@
 extends Node2D
-@export var speed = 800
+@export var speed = 1200
 
 @onready var sprite = $AnimatedSprite2D
 var target : Node2D

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://7sbush60w3i0"]
+[gd_scene load_steps=22 format=3 uid="uid://7sbush60w3i0"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/projectile.gd" id="1_1ioob"]
+[ext_resource type="AudioStream" uid="uid://b6gskf025o65i" path="res://assets/Sound/Tower Attack/catapult.wav" id="4_3bq4q"]
 [ext_resource type="Texture2D" uid="uid://bpdys50v5pkgs" path="res://assets/Towerpack2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Projectile - Impact.png" id="5_dn5r0"]
 [ext_resource type="Texture2D" uid="uid://gysj5xu4xnd4" path="res://assets/Towerpack2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Projectile.png" id="5_jbwwj"]
 
@@ -143,5 +144,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
 shape = SubResource("CircleShape2D_t78rx")
 disabled = true
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3bq4q")
+volume_db = -20.0
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_area_damage_body_entered"]
