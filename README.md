@@ -13,3 +13,4 @@ Dynamite Fuse SFX: https://freesound.org/people/maximumplay3r/sounds/713344/ <br
 Dynamite Explosion SFX: https://freesound.org/people/qubodup/sounds/182429/ <br>
 Skeleton Walk SFX: https://freesound.org/people/RedRoxPeterPepper/sounds/420253/ <br>
 Golem Walk SFX: https://freesound.org/people/newlocknew/sounds/667240/ <br>
+Tower placement shockwave: https://pixabay.com/sound-effects/explosion-pas-61639/
