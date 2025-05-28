@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cv7j0ktgxsopp"]
+[gd_scene load_steps=32 format=3 uid="uid://cv7j0ktgxsopp"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/ballista.gd" id="1_628jk"]
 [ext_resource type="Script" path="res://scenes/Towers/Ballista/range.gd" id="2_bndwu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="8_n1pip"]
 [ext_resource type="AudioStream" uid="uid://be6btbh7w4nte" path="res://assets/Sound/Tower Attack/ballista.wav" id="9_ywkon"]
 [ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="10_mg801"]
+[ext_resource type="AudioStream" uid="uid://q21haj0c8dco" path="res://assets/Sound/Tower Attack/shockwave.wav" id="11_v8ket"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bvcj"]
 radius = 600.0
@@ -215,6 +216,10 @@ volume_db = -15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
 shape = SubResource("CircleShape2D_ibc8f")
+
+[node name="BurstSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_v8ket")
+volume_db = -10.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://140cwmlvmpo5"]
+[gd_scene load_steps=39 format=3 uid="uid://140cwmlvmpo5"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/orb_tower.gd" id="1_ald6h"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/range.gd" id="2_fhlse"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/projection_spawner.gd" id="7_8c6w4"]
 [ext_resource type="PackedScene" uid="uid://dgoocohbvqsli" path="res://scenes/Towers/Orb Tower/Orb.tscn" id="8_wfwti"]
 [ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="9_2aint"]
+[ext_resource type="AudioStream" uid="uid://q21haj0c8dco" path="res://assets/Sound/Tower Attack/shockwave.wav" id="10_tmr48"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6s7v"]
 radius = 400.0
@@ -271,6 +272,10 @@ polygon = PackedVector2Array(0, -111, -13, -87, -13, -83, -20, -83, -20, -95, -2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
 shape = SubResource("CircleShape2D_3cyuq")
+
+[node name="BurstSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_tmr48")
+volume_db = -10.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

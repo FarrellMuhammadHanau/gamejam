@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cmaoex6yntqwa"]
+[gd_scene load_steps=42 format=3 uid="uid://cmaoex6yntqwa"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/catapult_tower.gd" id="1_76d8u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/range.gd" id="2_ah8je"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ch1su8mw3l034" path="res://assets/Towerpack2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Weapon.png" id="7_n4w2u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/projection_spawner.gd" id="8_o0ibc"]
 [ext_resource type="PackedScene" uid="uid://7sbush60w3i0" path="res://scenes/Towers/Catapult Tower/Projectile.tscn" id="9_ujg82"]
+[ext_resource type="AudioStream" uid="uid://q21haj0c8dco" path="res://assets/Sound/Tower Attack/shockwave.wav" id="11_ob41g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vypdx"]
 bg_color = Color(0.705882, 0.705882, 0.705882, 0.470588)
@@ -297,6 +298,10 @@ polygon = PackedVector2Array(-26, -93, 26, -93, 26, -62, 33, -32, 32, 33, -33, 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
 shape = SubResource("CircleShape2D_28f41")
+
+[node name="BurstSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ob41g")
+volume_db = -10.0
 
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]

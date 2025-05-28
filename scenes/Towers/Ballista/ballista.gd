@@ -13,6 +13,7 @@ extends StaticBody2D
 @onready var attack_sound : AudioStreamPlayer2D = $AttackSound
 @onready var burst_animation : AnimatedSprite2D = $Burst
 @onready var burst_area : Area2D = $BurstArea
+@onready var burst_sound : AudioStreamPlayer2D = $BurstSound
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
@@ -37,6 +38,7 @@ func _ready() -> void:
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	
 	burst_animation.play("default")
+	burst_sound.play()
 	await burst_animation.animation_finished
 	burst_area.set_deferred("monitoring", false)
 	burst_area.set_deferred("visible", false)
