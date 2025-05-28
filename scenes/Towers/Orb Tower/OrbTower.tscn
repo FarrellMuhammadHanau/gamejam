@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://140cwmlvmpo5"]
+[gd_scene load_steps=38 format=3 uid="uid://140cwmlvmpo5"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/orb_tower.gd" id="1_ald6h"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/range.gd" id="2_fhlse"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://db1c3ju34jivp" path="res://assets/Towerpack1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 03 - Weapon.png" id="6_vo3tx"]
 [ext_resource type="Script" path="res://scenes/Towers/Orb Tower/projection_spawner.gd" id="7_8c6w4"]
 [ext_resource type="PackedScene" uid="uid://dgoocohbvqsli" path="res://scenes/Towers/Orb Tower/Orb.tscn" id="8_wfwti"]
+[ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="9_2aint"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6s7v"]
 radius = 400.0
@@ -21,6 +22,49 @@ corner_radius_bottom_left = 999
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jl1o"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcrg"]
+atlas = ExtResource("9_2aint")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqbks"]
+atlas = ExtResource("9_2aint")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta7o6"]
+atlas = ExtResource("9_2aint")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itonl"]
+atlas = ExtResource("9_2aint")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3i8f"]
+atlas = ExtResource("9_2aint")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3gte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqbks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itonl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3i8f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e373x"]
 
@@ -150,12 +194,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cyuq"]
+radius = 80.0
+
 [node name="OrbTower" type="StaticBody2D" groups=["Tower"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_ald6h")
 max_health = 1000
 health = 1000
+burst_damage = 70
 
 [node name="Range" type="Area2D" parent="."]
 visible = false
@@ -191,6 +239,11 @@ texture_under = ExtResource("3_c4mc4")
 texture_progress = ExtResource("4_hbfrl")
 texture_progress_offset = Vector2(100, 42)
 
+[node name="Burst" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b3gte")
+frame = 4
+frame_progress = 1.0
+
 [node name="Base" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_e373x")
 position = Vector2(0, -32)
@@ -214,6 +267,11 @@ projection = ExtResource("8_wfwti")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
 polygon = PackedVector2Array(0, -111, -13, -87, -13, -83, -20, -83, -20, -95, -25, -92, -26, -55, -33, -33, -32, 32, 31, 32, 32, -34, 26, -54, 26, -91, 21, -95, 20, -84, 14, -84)
 
+[node name="BurstArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
+shape = SubResource("CircleShape2D_3cyuq")
+
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -223,3 +281,4 @@ polygon = PackedVector2Array(0, -111, -13, -87, -13, -83, -20, -83, -20, -95, -2
 [connection signal="spawn" from="ProjectionSpawner" to="ProjectionSpawner" method="_on_spawn"]
 [connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]
+[connection signal="body_entered" from="BurstArea" to="." method="_on_burst_area_body_entered"]

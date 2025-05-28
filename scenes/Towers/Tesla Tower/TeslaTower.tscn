@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://beh3q2586lv10"]
+[gd_scene load_steps=47 format=3 uid="uid://beh3q2586lv10"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/tesla_tower.gd" id="1_6omw1"]
 [ext_resource type="Script" path="res://scenes/Towers/Tesla Tower/range.gd" id="2_wv61q"]
@@ -21,6 +21,49 @@ corner_radius_top_left = 1024
 corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcrg"]
+atlas = ExtResource("5_x8tyb")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqbks"]
+atlas = ExtResource("5_x8tyb")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta7o6"]
+atlas = ExtResource("5_x8tyb")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itonl"]
+atlas = ExtResource("5_x8tyb")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3i8f"]
+atlas = ExtResource("5_x8tyb")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyky6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqbks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itonl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3i8f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rofs4"]
 
@@ -221,12 +264,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqprl"]
+radius = 80.0
+
 [node name="TeslaTower" type="StaticBody2D" groups=["Tower"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_6omw1")
 health = 1800
 max_health = 1800
+burst_damage = 70
 
 [node name="Range" type="Area2D" parent="."]
 collision_layer = 0
@@ -260,6 +307,9 @@ texture_under = ExtResource("3_67i0x")
 texture_progress = ExtResource("4_ld0d7")
 texture_progress_offset = Vector2(100, 42)
 
+[node name="Burst" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wyky6")
+
 [node name="Base" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_rofs4")
 position = Vector2(0, -32)
@@ -290,6 +340,11 @@ polygon = PackedVector2Array(0, -99, -9, -90, -9, -84, -25, -84, -26, -61, -32, 
 stream = ExtResource("8_vu5ac")
 volume_db = -25.0
 
+[node name="BurstArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
+shape = SubResource("CircleShape2D_cqprl")
+
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -298,3 +353,4 @@ volume_db = -25.0
 [connection signal="frame_changed" from="Weapon" to="." method="_on_weapon_frame_changed"]
 [connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]
+[connection signal="body_entered" from="BurstArea" to="." method="_on_burst_area_body_entered"]

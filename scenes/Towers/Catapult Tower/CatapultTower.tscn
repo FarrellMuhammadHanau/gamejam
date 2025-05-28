@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cmaoex6yntqwa"]
+[gd_scene load_steps=41 format=3 uid="uid://cmaoex6yntqwa"]
 
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/catapult_tower.gd" id="1_76d8u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/range.gd" id="2_ah8je"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxrh2xdhwjtri" path="res://assets/Towerpack2/Towers bases/PNGs/Tower 04.png" id="4_hixga"]
 [ext_resource type="Texture2D" uid="uid://dt5mb12s8ul85" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Background.png" id="4_omhlp"]
 [ext_resource type="Texture2D" uid="uid://ddlbi8bp6kic3" path="res://assets/HealthBar/Textures/Bar 3/LoadingBar_3_Fill_Green.png" id="5_wx5tc"]
+[ext_resource type="Texture2D" uid="uid://dwsng5tvt4nua" path="res://assets/Towerpack4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png" id="6_1fsak"]
 [ext_resource type="Texture2D" uid="uid://ch1su8mw3l034" path="res://assets/Towerpack2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Weapon.png" id="7_n4w2u"]
 [ext_resource type="Script" path="res://scenes/Towers/Catapult Tower/projection_spawner.gd" id="8_o0ibc"]
 [ext_resource type="PackedScene" uid="uid://7sbush60w3i0" path="res://scenes/Towers/Catapult Tower/Projectile.tscn" id="9_ujg82"]
@@ -26,6 +27,49 @@ corner_radius_bottom_left = 1024
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27ggs"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcrg"]
+atlas = ExtResource("6_1fsak")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqbks"]
+atlas = ExtResource("6_1fsak")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta7o6"]
+atlas = ExtResource("6_1fsak")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itonl"]
+atlas = ExtResource("6_1fsak")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3i8f"]
+atlas = ExtResource("6_1fsak")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv8an"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqbks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itonl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3i8f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c5exn"]
 
@@ -166,12 +210,16 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_28f41"]
+radius = 80.0
+
 [node name="CatapultTower" type="StaticBody2D" groups=["Tower"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_76d8u")
 health = 1400
 max_health = 1400
+burst_damage = 70
 
 [node name="Range" type="Area2D" parent="."]
 collision_layer = 0
@@ -219,6 +267,9 @@ texture_under = ExtResource("4_omhlp")
 texture_progress = ExtResource("5_wx5tc")
 texture_progress_offset = Vector2(100, 42)
 
+[node name="Burst" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yv8an")
+
 [node name="Base" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_c5exn")
 position = Vector2(0, -32)
@@ -242,6 +293,11 @@ projection = ExtResource("9_ujg82")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseArea"]
 polygon = PackedVector2Array(-26, -93, 26, -93, 26, -62, 33, -32, 32, 33, -33, 32, -32, -34, -26, -62)
 
+[node name="BurstArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurstArea"]
+shape = SubResource("CircleShape2D_28f41")
+
 [connection signal="add_target" from="." to="." method="_on_add_target"]
 [connection signal="remove_target" from="." to="." method="_on_remove_target"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
@@ -251,3 +307,4 @@ polygon = PackedVector2Array(-26, -93, 26, -93, 26, -62, 33, -32, 32, 33, -33, 3
 [connection signal="spawn" from="Weapon/ProjectionSpawner" to="Weapon/ProjectionSpawner" method="_on_spawn"]
 [connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]
+[connection signal="body_entered" from="BurstArea" to="." method="_on_burst_area_body_entered"]

@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var health : int
 @export var max_health : int
+@export var burst_damage : int = 30
 
 @onready var base = $Base
 @onready var weapon = $Weapon
@@ -9,6 +10,8 @@ extends StaticBody2D
 @onready var health_bar : TextureProgressBar = $HealthBar
 @onready var misc_layer: TileMapLayer = get_tree().get_current_scene().get_node("WorldLayer/MiscLayer")
 @onready var range_indicator: Node2D = $RangeIndicator
+@onready var burst_animation : AnimatedSprite2D = $Burst
+@onready var burst_area : Area2D = $BurstArea
 
 signal add_target(body: CharacterBody2D)
 signal remove_target(body: CharacterBody2D)
@@ -20,6 +23,7 @@ var is_attacking = false
 var attack_frame = 5
 var targets = []
 var target
+var burst_targets = []
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -31,6 +35,13 @@ func _ready() -> void:
 	health_bar.value = health
 	weapon.play(idle_animation)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
+	
+	burst_animation.play("default")
+	await burst_animation.animation_finished
+	burst_area.set_deferred("monitoring", false)
+	burst_area.set_deferred("visible", false)
+	burst_animation.set_deferred("visible", false)
+	
 	for enemy in enemies:
 		if is_instance_valid(enemy):
 			enemy.emit_signal("add_tower", self)
@@ -103,3 +114,8 @@ func _on_mouse_area_mouse_exited() -> void:
 	mat = weapon.material as CanvasItemMaterial
 	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
 	range_indicator.visible = false
+
+func _on_burst_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy") and body not in burst_targets:
+		burst_targets.append(body)
+		body.emit_signal("take_damage", burst_damage)

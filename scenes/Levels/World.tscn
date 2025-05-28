@@ -564,9 +564,3 @@ stream = ExtResource("25_s4pgo")
 volume_db = -15.0
 
 [connection signal="remove_enemy" from="." to="." method="_on_remove_enemy"]
-[connection signal="build" from="WorldLayer/MiscLayer/DestroyedMine" to="WorldLayer/MiscLayer/DestroyedMine" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@18404" to="WorldLayer/MiscLayer/@StaticBody2D@18404" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@18408" to="WorldLayer/MiscLayer/@StaticBody2D@18408" method="_on_build"]
-[connection signal="build" from="WorldLayer/MiscLayer/@StaticBody2D@18409" to="WorldLayer/MiscLayer/@StaticBody2D@18409" method="_on_build"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/Castle" to="WorldLayer/MiscLayer/Castle" method="_on_take_damage"]
-[connection signal="take_damage" from="WorldLayer/MiscLayer/Mine" to="WorldLayer/MiscLayer/Mine" method="_on_take_damage"]
